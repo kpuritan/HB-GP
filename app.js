@@ -774,8 +774,26 @@ function initNavigation() {
   const mobileBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   if (mobileBtn && mobileMenu) {
-    mobileBtn.addEventListener('click', () => {
+    mobileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       mobileMenu.classList.toggle('hidden');
+    });
+
+    // 화면 바깥 클릭 시 메뉴 닫기
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  }
+
+  // 모달 배경 클릭 시 닫기
+  const modal = document.getElementById('detail-modal');
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeDetailModal();
+      }
     });
   }
 }
