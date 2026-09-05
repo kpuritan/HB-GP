@@ -430,93 +430,125 @@ window.setConsultationFolder = function(name) {
 };
 
 /* ==========================================================================
-   4. 입시정보 (글 칼럼 & 영상 큐레이션)
+   4. 입시정보 (글 칼럼 & 영상 큐레이션 - 4/8/12개 선택 보기)
    ========================================================================== */
+let currentAdmissionTab = 'article';
+let currentAdmissionPageSize = 4;
+
 function initAdmissionSection() {
-  const articlesContainer = document.getElementById('admission-articles-view');
-  const videosContainer = document.getElementById('admission-videos-view');
   const btnArticle = document.getElementById('tab-btn-article');
   const btnVideo = document.getElementById('tab-btn-video');
+  const articlesContainer = document.getElementById('admission-articles-view');
+  const videosContainer = document.getElementById('admission-videos-view');
 
-  // 1) 글 칼럼 렌더링
-  if (articlesContainer && SITE_DATA.admissionData.articles) {
-    articlesContainer.innerHTML = SITE_DATA.admissionData.articles.map(art => `
-      <div class="clean-card overflow-hidden flex flex-col justify-between group bg-white">
-        <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-          <div>
-            <div class="flex items-center justify-between text-[10px] text-slate-400 mb-1.5">
-              <span class="px-2 py-0.5 bg-red-600 text-white font-bold rounded-full">${art.badge}</span>
-              <span><i class="far fa-clock mr-1"></i>${art.readTime}</span>
-            </div>
-            <h3 class="text-sm font-bold text-slate-900 mb-1.5 group-hover:text-blue-700 transition cursor-pointer leading-snug line-clamp-2" onclick="openArticleModal('${art.id}')">
-              ${art.title}
-            </h3>
-            <p class="text-xs text-slate-600 line-clamp-3 leading-relaxed">
-              ${art.summary}
-            </p>
-          </div>
+  renderAdmissionArticles();
+  renderAdmissionVideos();
 
-          <div class="pt-2.5 border-t border-slate-100 flex items-center justify-between">
-            <span class="text-[10px] text-slate-400">${art.date}</span>
-            <button onclick="openArticleModal('${art.id}')" class="text-xs font-bold text-blue-700 hover:text-orange-600 flex items-center gap-1 transition">
-              <span>전문 읽기</span>
-              <i class="fas fa-arrow-right text-[9px]"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  // 2) 영상 큐레이션 렌더링
-  if (videosContainer && SITE_DATA.admissionData.videos) {
-    videosContainer.innerHTML = SITE_DATA.admissionData.videos.map(vid => `
-      <div class="clean-card overflow-hidden flex flex-col justify-between bg-white group">
-        <a href="${vid.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="relative block aspect-video overflow-hidden bg-slate-900">
-          <img src="${vid.thumbnail}" alt="${vid.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-3 justify-between">
-            <span class="px-2 py-0.5 bg-red-600 text-white text-[10px] font-bold rounded">${vid.tag}</span>
-            <span class="text-[10px] font-mono text-white bg-black/60 px-1.5 py-0.5 rounded">${vid.duration}</span>
-          </div>
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="w-10 h-10 rounded-full bg-red-600/90 text-white flex items-center justify-center text-sm shadow-lg group-hover:scale-110 transition">
-              <i class="fas fa-play ml-0.5"></i>
-            </div>
-          </div>
-        </a>
-        <div class="p-4 flex-1 flex flex-col justify-between">
-          <div>
-            <span class="text-[10px] font-bold text-sky-600 block mb-1">${vid.channel}</span>
-            <h4 class="text-xs font-bold text-slate-900 leading-snug line-clamp-2 mb-1.5">${vid.title}</h4>
-            <p class="text-[11px] text-slate-500 line-clamp-2">${vid.desc}</p>
-          </div>
-          <div class="mt-3 pt-2 border-t border-slate-100 text-right">
-            <a href="${vid.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-red-600 hover:text-red-700 inline-flex items-center gap-1">
-              <span>유튜브 시청</span>
-              <i class="fas fa-external-link-alt text-[9px]"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  // 탭 토글
   if (btnArticle && btnVideo) {
     btnArticle.addEventListener('click', () => {
-      btnArticle.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white transition flex items-center gap-1';
-      btnVideo.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition flex items-center gap-1';
-      articlesContainer.classList.remove('hidden');
-      videosContainer.classList.add('hidden');
+      currentAdmissionTab = 'article';
+      btnArticle.classList.add('active');
+      btnVideo.classList.remove('active');
+      if (articlesContainer) articlesContainer.classList.remove('hidden');
+      if (videosContainer) videosContainer.classList.add('hidden');
     });
 
     btnVideo.addEventListener('click', () => {
-      btnVideo.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold bg-red-600 text-white transition flex items-center gap-1';
-      btnArticle.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition flex items-center gap-1';
-      videosContainer.classList.remove('hidden');
-      articlesContainer.classList.add('hidden');
+      currentAdmissionTab = 'video';
+      btnVideo.classList.add('active');
+      btnArticle.classList.remove('active');
+      if (videosContainer) videosContainer.classList.remove('hidden');
+      if (articlesContainer) articlesContainer.classList.add('hidden');
     });
   }
+}
+
+window.setAdmissionPageSize = function(size) {
+  currentAdmissionPageSize = size;
+
+  // 버튼 스타일 동기화
+  const btns = document.querySelectorAll('.page-size-btn');
+  btns.forEach(b => {
+    if (parseInt(b.getAttribute('data-size')) === size) {
+      b.classList.add('active');
+    } else {
+      b.classList.remove('active');
+    }
+  });
+
+  renderAdmissionArticles();
+  renderAdmissionVideos();
+};
+
+function renderAdmissionArticles() {
+  const container = document.getElementById('admission-articles-view');
+  if (!container || !SITE_DATA.admissionData.articles) return;
+
+  const items = SITE_DATA.admissionData.articles.slice(0, currentAdmissionPageSize);
+
+  container.innerHTML = items.map(art => `
+    <div class="clean-card overflow-hidden flex flex-col justify-between group bg-white hover:border-blue-300">
+      <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+        <div>
+          <div class="flex items-center justify-between text-[10px] text-slate-400 mb-2">
+            <span class="px-2.5 py-0.5 bg-blue-600 text-white font-bold rounded-full">${art.badge}</span>
+            <span><i class="far fa-clock mr-1"></i>${art.readTime}</span>
+          </div>
+          <h3 class="text-sm font-black text-slate-900 mb-2 group-hover:text-blue-700 transition cursor-pointer leading-snug line-clamp-2" onclick="openArticleModal('${art.id}')">
+            ${art.title}
+          </h3>
+          <p class="text-xs text-slate-600 line-clamp-3 leading-relaxed">
+            ${art.summary}
+          </p>
+        </div>
+
+        <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+          <span class="text-[10px] text-slate-400">${art.date}</span>
+          <button onclick="openArticleModal('${art.id}')" class="text-xs font-extrabold text-blue-700 hover:text-orange-600 flex items-center gap-1 transition">
+            <span>전문 읽기</span>
+            <i class="fas fa-arrow-right text-[9px]"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderAdmissionVideos() {
+  const container = document.getElementById('admission-videos-view');
+  if (!container || !SITE_DATA.admissionData.videos) return;
+
+  const items = SITE_DATA.admissionData.videos.slice(0, currentAdmissionPageSize);
+
+  container.innerHTML = items.map(vid => `
+    <div class="clean-card overflow-hidden flex flex-col justify-between bg-white group hover:border-red-300">
+      <a href="${vid.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="relative block aspect-video overflow-hidden bg-slate-900">
+        <img src="${vid.thumbnail}" alt="${vid.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-3 justify-between">
+          <span class="px-2 py-0.5 bg-red-600 text-white text-[10px] font-bold rounded">${vid.tag}</span>
+          <span class="text-[10px] font-mono text-white bg-black/60 px-1.5 py-0.5 rounded">${vid.duration}</span>
+        </div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="w-10 h-10 rounded-full bg-red-600/90 text-white flex items-center justify-center text-sm shadow-lg group-hover:scale-110 transition">
+            <i class="fas fa-play ml-0.5"></i>
+          </div>
+        </div>
+      </a>
+      <div class="p-4 flex-1 flex flex-col justify-between">
+        <div>
+          <span class="text-[10px] font-bold text-sky-600 block mb-1">${vid.channel}</span>
+          <h4 class="text-xs font-bold text-slate-900 leading-snug line-clamp-2 mb-1.5">${vid.title}</h4>
+          <p class="text-[11px] text-slate-500 line-clamp-2">${vid.desc}</p>
+        </div>
+        <div class="mt-3 pt-2 border-t border-slate-100 text-right">
+          <a href="${vid.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-red-600 hover:text-red-700 inline-flex items-center gap-1">
+            <span>유튜브 무료 시청</span>
+            <i class="fas fa-external-link-alt text-[9px]"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  `).join('');
 }
 
 window.openArticleModal = function(articleId) {

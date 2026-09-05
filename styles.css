@@ -517,3 +517,29 @@ html, body {
 .prose-article li {
   margin-bottom: 0.5rem;
 }
+
+/* 입시정보 보기 개수 선택 버튼 (4/8/12개) */
+.page-size-btn {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #475569;
+  border: 1px solid #CBD5E1;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.page-size-btn:hover {
+  border-color: #0284C7;
+  color: #0284C7;
+}
+
+.page-size-btn.active {
+  background: #0284C7;
+  color: #FFFFFF;
+  border-color: #0284C7;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+}
+
