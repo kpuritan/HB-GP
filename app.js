@@ -1,120 +1,33 @@
-// 해법독서논술 고양파주지사 웹 애플리케이션 인터랙션 스크립트
+// 해법독서논술 고양파주지사 웹 애플리케이션 - High-End Luxury Edition
 
 document.addEventListener('DOMContentLoaded', () => {
   initApp();
 });
 
 function initApp() {
-  // 1. 슬라이더 초기화
-  initHeroSlider();
-
-  // 2. 교재분석 섹션 렌더링 & 이벤트
+  // 1. 교재분석 섹션 렌더링 & 이벤트
   renderBookAnalyses('all');
   initBookFilter();
 
-  // 3. 입시정보 섹션 렌더링 & 이벤트
-  renderAdmissions('all');
-  initAdmissionFilter();
+  // 2. 입시정보 섹션 렌더링
+  renderAdmissions();
 
-  // 4. 교실 찾기 렌더링 & 이벤트
+  // 3. 교실 찾기 렌더링 & 이벤트
   renderClasses('all');
   initClassSearchAndFilter();
 
-  // 5. 가맹/창업 혜택 및 후기 렌더링
+  // 4. 가맹/창업 혜택 및 후기 렌더링
   renderFranchiseAndReviews();
 
-  // 6. 상담 신청 폼 처리
+  // 5. 상담 신청 폼 처리
   initConsultationForm();
 
-  // 7. 모바일 메뉴 & 네비게이션 스크롤
+  // 6. 모바일 메뉴 & 네비게이션 스크롤
   initNavigation();
 }
 
 /* ==========================================================================
-   1. 히어로 슬라이더
-   ========================================================================== */
-let currentSlide = 0;
-let slideInterval;
-
-function initHeroSlider() {
-  const container = document.getElementById('hero-slider');
-  if (!container || !SITE_DATA.heroSlides.length) return;
-
-  container.innerHTML = SITE_DATA.heroSlides.map((slide, idx) => `
-    <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out flex items-center justify-center ${idx === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}" data-slide="${idx}">
-      <div class="absolute inset-0 bg-gradient-to-r ${slide.bgGradient} opacity-90"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:16px_16px]"></div>
-      <div class="relative max-w-6xl mx-auto px-6 py-20 text-center text-white z-20">
-        <span class="inline-block px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-white/20 backdrop-blur-md border border-white/30 mb-6 text-yellow-300">
-          <i class="fas fa-sparkles mr-2"></i>${slide.badge}
-        </span>
-        <h1 class="hero-title text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight drop-shadow-md">
-          ${slide.title}
-        </h1>
-        <p class="text-base sm:text-xl text-slate-200 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
-          ${slide.subtitle}
-        </p>
-        <div class="flex flex-wrap items-center justify-center gap-4">
-          <a href="${slide.ctaLink}" class="px-8 py-4 rounded-xl font-bold bg-orange-600 hover:bg-orange-500 text-white shadow-lg hover:shadow-orange-500/30 transition transform hover:-translate-y-0.5 flex items-center gap-2">
-            <span>${slide.ctaText}</span>
-            <i class="fas fa-arrow-right"></i>
-          </a>
-          <a href="#consultation" class="px-8 py-4 rounded-xl font-bold bg-white/15 hover:bg-white/25 text-white border border-white/40 backdrop-blur-sm transition flex items-center gap-2">
-            <i class="fas fa-comments"></i>
-            <span>1:1 빠른 상담신청</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  `).join('');
-
-  // 슬라이드 인디케이터
-  const indicatorContainer = document.getElementById('slider-indicators');
-  if (indicatorContainer) {
-    indicatorContainer.innerHTML = SITE_DATA.heroSlides.map((_, idx) => `
-      <button onclick="goToSlide(${idx})" class="w-3 h-3 rounded-full transition-all ${idx === 0 ? 'w-8 bg-orange-500' : 'bg-white/50 hover:bg-white'}" aria-label="Slide ${idx + 1}"></button>
-    `).join('');
-  }
-
-  startSliderTimer();
-}
-
-function startSliderTimer() {
-  clearInterval(slideInterval);
-  slideInterval = setInterval(() => {
-    goToSlide((currentSlide + 1) % SITE_DATA.heroSlides.length);
-  }, 6000);
-}
-
-window.goToSlide = function(index) {
-  const slides = document.querySelectorAll('.hero-slide');
-  const indicators = document.querySelectorAll('#slider-indicators button');
-  if (!slides.length) return;
-
-  slides.forEach((s, idx) => {
-    if (idx === index) {
-      s.classList.remove('opacity-0', 'z-0', 'pointer-events-none');
-      s.classList.add('opacity-100', 'z-10');
-    } else {
-      s.classList.remove('opacity-100', 'z-10');
-      s.classList.add('opacity-0', 'z-0', 'pointer-events-none');
-    }
-  });
-
-  indicators.forEach((ind, idx) => {
-    if (idx === index) {
-      ind.className = 'w-8 h-3 rounded-full transition-all bg-orange-500';
-    } else {
-      ind.className = 'w-3 h-3 rounded-full transition-all bg-white/50 hover:bg-white';
-    }
-  });
-
-  currentSlide = index;
-  startSliderTimer();
-};
-
-/* ==========================================================================
-   2. 교재분석 섹션 (Book Analysis)
+   1. 교재분석 섹션 (Book Analysis)
    ========================================================================== */
 function renderBookAnalyses(filter = 'all') {
   const container = document.getElementById('book-analysis-list');
@@ -125,41 +38,41 @@ function renderBookAnalyses(filter = 'all') {
     : SITE_DATA.bookAnalyses.filter(item => item.level === filter);
 
   if (filtered.length === 0) {
-    container.innerHTML = `<div class="col-span-3 text-center py-12 text-slate-400">해당 분류의 교재 분석 자료가 준비 중입니다.</div>`;
+    container.innerHTML = `<div class="col-span-3 text-center py-12 text-slate-500">해당 분류의 교재 분석 자료가 준비 중입니다.</div>`;
     return;
   }
 
   container.innerHTML = filtered.map(item => `
-    <div class="book-card bg-white rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between border border-slate-200">
-      <div class="relative h-48 overflow-hidden group">
+    <div class="luxury-card overflow-hidden flex flex-col justify-between group">
+      <div class="relative h-48 overflow-hidden">
         <img src="${item.coverImage}" alt="${item.title}" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
         <div class="absolute top-4 left-4">
-          <span class="px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-lg shadow-sm">${item.levelLabel}</span>
+          <span class="px-3 py-1 bg-amber-500 text-slate-950 text-xs font-black rounded-md shadow-md">${item.levelLabel}</span>
         </div>
         <div class="absolute bottom-3 left-4 right-4 text-white">
-          <span class="text-xs text-yellow-300 font-semibold mb-1 block">${item.featureTag}</span>
+          <span class="text-xs text-amber-300 font-semibold mb-1 block">${item.featureTag}</span>
           <h4 class="font-bold text-lg leading-snug line-clamp-1">${item.title}</h4>
         </div>
       </div>
       
-      <div class="p-6 flex-1 flex flex-col justify-between">
+      <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
         <div>
-          <p class="text-sm text-slate-600 mb-4 line-clamp-2">${item.summary}</p>
+          <p class="text-xs sm:text-sm text-slate-300 line-clamp-2 leading-relaxed mb-4">${item.summary}</p>
           
-          <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 mb-4 space-y-2">
-            <div class="text-xs font-bold text-blue-900 flex items-center gap-1.5">
-              <i class="fas fa-check-circle text-blue-600"></i> 핵심 분석 포인트
+          <div class="bg-black/40 p-3.5 rounded-xl border border-white/5 space-y-1.5">
+            <div class="text-[11px] font-bold text-amber-400 flex items-center gap-1.5">
+              <i class="fas fa-check-circle text-amber-400"></i> 핵심 교육 포인트
             </div>
-            <p class="text-xs text-slate-600 line-clamp-2">${item.analysisPoints[0].title}</p>
+            <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">${item.analysisPoints[0].title}</p>
           </div>
         </div>
 
-        <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
-          <span class="text-xs text-slate-400"><i class="fas fa-user-graduate mr-1"></i>대상: ${item.targetAge}</span>
-          <button onclick="openBookModal('${item.id}')" class="px-4 py-2 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-600 hover:text-white rounded-lg transition flex items-center gap-1">
-            <span>심층 분석보기</span>
-            <i class="fas fa-chevron-right text-[10px]"></i>
+        <div class="pt-3 border-t border-white/5 flex items-center justify-between">
+          <span class="text-[11px] text-slate-400"><i class="fas fa-user-graduate mr-1 text-amber-400"></i>대상: ${item.targetAge}</span>
+          <button onclick="openBookModal('${item.id}')" class="px-3.5 py-1.5 text-xs font-bold text-amber-300 hover:text-slate-950 bg-amber-400/10 hover:bg-amber-400 border border-amber-400/30 rounded-lg transition flex items-center gap-1.5">
+            <span>심층 분석</span>
+            <i class="fas fa-chevron-right text-[9px]"></i>
           </button>
         </div>
       </div>
@@ -170,12 +83,9 @@ function renderBookAnalyses(filter = 'all') {
 function initBookFilter() {
   const buttons = document.querySelectorAll('[data-book-filter]');
   buttons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      buttons.forEach(b => b.classList.remove('bg-blue-600', 'text-white', 'shadow-md'));
-      buttons.forEach(b => b.classList.add('bg-white', 'text-slate-700'));
-      btn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
-      btn.classList.remove('bg-white', 'text-slate-700');
-      
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
       const filter = btn.getAttribute('data-book-filter');
       renderBookAnalyses(filter);
     });
@@ -191,52 +101,52 @@ window.openBookModal = function(id) {
   if (!modal || !modalBody) return;
 
   modalBody.innerHTML = `
-    <div class="space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-200">
+    <div class="space-y-6 text-slate-200">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-white/10">
         <div>
-          <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded-md">${item.levelLabel}</span>
-          <span class="ml-2 text-xs text-orange-600 font-semibold">${item.featureTag}</span>
-          <h2 class="text-2xl font-bold text-slate-900 mt-2">${item.title}</h2>
+          <span class="px-3 py-1 bg-amber-500 text-slate-950 text-xs font-black rounded">${item.levelLabel}</span>
+          <span class="ml-2 text-xs text-amber-300 font-semibold">${item.featureTag}</span>
+          <h2 class="text-2xl font-extrabold text-white mt-2">${item.title}</h2>
         </div>
         <div class="text-right">
-          <span class="text-xs text-slate-500 block">학습 권장 대상</span>
-          <span class="text-sm font-bold text-slate-800">${item.targetAge}</span>
+          <span class="text-xs text-slate-400 block">권장 대상</span>
+          <span class="text-sm font-bold text-amber-400">${item.targetAge}</span>
         </div>
       </div>
 
-      <div class="bg-blue-50/70 p-4 rounded-xl border border-blue-100 text-sm text-slate-700 leading-relaxed">
-        <strong>교재 개요:</strong> ${item.summary}
+      <div class="bg-black/50 p-4 rounded-xl border border-white/10 text-xs sm:text-sm text-slate-300 leading-relaxed">
+        <strong class="text-white">교재 개요:</strong> ${item.summary}
       </div>
 
       <div>
-        <h4 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
-          <i class="fas fa-microscope text-orange-600"></i> 교재 심층 교육 분석 포인트
+        <h4 class="text-base font-bold text-white mb-3 flex items-center gap-2">
+          <i class="fas fa-microscope text-amber-400"></i> 교재 심층 교육 분석 포인트
         </h4>
-        <div class="space-y-4">
+        <div class="space-y-3">
           ${item.analysisPoints.map(pt => `
-            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80">
-              <h5 class="font-bold text-blue-900 text-sm mb-1">${pt.title}</h5>
-              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${pt.desc}</p>
+            <div class="p-4 bg-white/5 rounded-xl border border-white/5">
+              <h5 class="font-bold text-amber-300 text-sm mb-1">${pt.title}</h5>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">${pt.desc}</p>
             </div>
           `).join('')}
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-        <div class="p-4 rounded-xl bg-amber-50/80 border border-amber-200">
-          <div class="text-xs font-bold text-amber-900 mb-1"><i class="fas fa-books mr-1"></i> 교재 패키지 구성</div>
-          <p class="text-xs text-amber-800">${item.curriculumTable}</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
+          <div class="text-xs font-bold text-amber-300 mb-1"><i class="fas fa-books mr-1"></i> 교재 패키지 구성</div>
+          <p class="text-xs text-slate-300 leading-relaxed">${item.curriculumTable}</p>
         </div>
-        <div class="p-4 rounded-xl bg-emerald-50/80 border border-emerald-200">
-          <div class="text-xs font-bold text-emerald-900 mb-1"><i class="fas fa-lightbulb mr-1"></i> 고양파주지사 지도 TIP</div>
-          <p class="text-xs text-emerald-800">${item.teacherTip}</p>
+        <div class="p-4 rounded-xl bg-blue-500/10 border border-blue-500/20">
+          <div class="text-xs font-bold text-blue-300 mb-1"><i class="fas fa-lightbulb mr-1"></i> 고양파주지사 지도 TIP</div>
+          <p class="text-xs text-slate-300 leading-relaxed">${item.teacherTip}</p>
         </div>
       </div>
 
-      <div class="pt-4 text-center border-t border-slate-200">
-        <a href="#consultation" onclick="closeDetailModal(); setConsultationBook('${item.title}')" class="inline-flex items-center gap-2 px-6 py-3 bg-orange-600 hover:bg-orange-500 text-white font-bold rounded-xl shadow-md transition">
-          <i class="fas fa-phone-alt"></i>
-          <span>이 교재로 맞춤 학습 상담 신청하기</span>
+      <div class="pt-4 text-center border-t border-white/10">
+        <a href="#consultation" onclick="closeDetailModal(); setConsultationBook('${item.title}')" class="btn-gold inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-sm font-bold">
+          <i class="fas fa-edit"></i>
+          <span>이 교재로 맞춤 학습상담 신청하기</span>
         </a>
       </div>
     </div>
@@ -247,52 +157,46 @@ window.openBookModal = function(id) {
 };
 
 /* ==========================================================================
-   3. 입시정보 섹션 (Admissions)
+   2. 입시정보 섹션 (Admissions)
    ========================================================================== */
-function renderAdmissions(filter = 'all') {
+function renderAdmissions() {
   const container = document.getElementById('admission-list');
   if (!container) return;
 
-  const list = SITE_DATA.admissions;
-
-  container.innerHTML = list.map(adm => `
-    <div class="blog-card flex flex-col justify-between">
-      <div class="relative h-48 overflow-hidden">
-        <img src="${adm.thumbnail}" alt="${adm.title}" class="w-full h-full object-cover transition duration-500 hover:scale-105">
-        <div class="absolute top-4 left-4 flex gap-2">
-          <span class="badge-hot shadow-sm">${adm.badge}</span>
-          <span class="px-2.5 py-0.5 bg-slate-900/70 text-white text-xs rounded-full backdrop-blur-sm">${adm.category}</span>
+  container.innerHTML = SITE_DATA.admissions.map(adm => `
+    <div class="luxury-card overflow-hidden flex flex-col justify-between group">
+      <div class="relative h-44 overflow-hidden">
+        <img src="${adm.thumbnail}" alt="${adm.title}" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
+        <div class="absolute top-3 left-3 flex gap-2">
+          <span class="px-2.5 py-0.5 bg-amber-500 text-slate-950 text-[10px] font-black rounded-full">${adm.badge}</span>
+          <span class="px-2 py-0.5 bg-black/60 text-slate-300 text-[10px] rounded-full backdrop-blur-md border border-white/10">${adm.category}</span>
         </div>
       </div>
 
-      <div class="p-6 flex-1 flex flex-col justify-between">
+      <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
         <div>
-          <div class="flex items-center text-xs text-slate-400 gap-3 mb-2">
+          <div class="flex items-center text-[11px] text-slate-500 gap-2 mb-2">
             <span><i class="far fa-calendar-alt mr-1"></i>${adm.date}</span>
-            <span><i class="far fa-user mr-1"></i>${adm.author}</span>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-3 hover:text-blue-700 transition cursor-pointer leading-snug line-clamp-2" onclick="openAdmissionModal('${adm.id}')">
+          <h3 class="text-base font-bold text-white mb-2 group-hover:text-amber-300 transition cursor-pointer leading-snug line-clamp-2" onclick="openAdmissionModal('${adm.id}')">
             ${adm.title}
           </h3>
-          <p class="text-sm text-slate-600 mb-6 line-clamp-3 leading-relaxed">
+          <p class="text-xs text-slate-400 line-clamp-3 leading-relaxed">
             ${adm.summary}
           </p>
         </div>
 
-        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-          <span class="text-xs font-semibold text-blue-600">해법독서논술 입시전략</span>
-          <button onclick="openAdmissionModal('${adm.id}')" class="text-xs font-bold text-slate-700 hover:text-orange-600 flex items-center gap-1 transition">
-            <span>전문 칼럼 읽기</span>
+        <div class="pt-3 border-t border-white/5 flex items-center justify-between">
+          <span class="text-[11px] text-blue-400 font-semibold">입시 심층 분석</span>
+          <button onclick="openAdmissionModal('${adm.id}')" class="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1 transition">
+            <span>칼럼 전문</span>
             <i class="fas fa-arrow-right text-[10px]"></i>
           </button>
         </div>
       </div>
     </div>
   `).join('');
-}
-
-function initAdmissionFilter() {
-  // 추후 필요 시 카테고리 필터 연동
 }
 
 window.openAdmissionModal = function(id) {
@@ -304,29 +208,29 @@ window.openAdmissionModal = function(id) {
   if (!modal || !modalBody) return;
 
   modalBody.innerHTML = `
-    <div class="space-y-6">
-      <div class="pb-4 border-b border-slate-200">
+    <div class="space-y-6 text-slate-200">
+      <div class="pb-4 border-b border-white/10">
         <div class="flex items-center gap-2 mb-2">
-          <span class="badge-hot">${adm.badge}</span>
-          <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-md">${adm.category}</span>
+          <span class="px-2.5 py-0.5 bg-amber-500 text-slate-950 text-xs font-black rounded-full">${adm.badge}</span>
+          <span class="px-3 py-0.5 bg-white/5 text-slate-300 text-xs font-semibold rounded-md border border-white/10">${adm.category}</span>
         </div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">${adm.title}</h2>
-        <div class="flex items-center gap-4 text-xs text-slate-500 mt-3">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white leading-tight">${adm.title}</h2>
+        <div class="flex items-center gap-4 text-xs text-slate-400 mt-3">
           <span><i class="far fa-calendar mr-1"></i>${adm.date}</span>
-          <span><i class="far fa-user mr-1"></i>${adm.author}</span>
+          <span><i class="far fa-user mr-1 text-amber-400"></i>${adm.author}</span>
         </div>
       </div>
 
-      <div class="prose-analysis max-w-none text-slate-700 leading-relaxed text-sm sm:text-base">
+      <div class="article-body max-w-none text-slate-300 leading-relaxed text-sm sm:text-base">
         ${adm.content}
       </div>
 
-      <div class="p-5 rounded-2xl bg-gradient-to-r from-blue-900 to-indigo-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="p-6 rounded-2xl bg-gradient-to-r from-blue-950 to-slate-900 border border-blue-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
-          <h4 class="font-bold text-lg mb-1">우리 아이 2028 대입 문해력 진단이 필요하신가요?</h4>
-          <p class="text-xs text-blue-200">고양·파주 가까운 교실에서 1:1 독서능력 무료 진단테스트를 받아보세요.</p>
+          <h4 class="font-bold text-white text-base mb-1">우리 아이 2028 대입 문해력 진단이 필요하신가요?</h4>
+          <p class="text-xs text-slate-400">고양·파주 가까운 교실에서 1:1 독서능력 무료 진단테스트를 받아보세요.</p>
         </div>
-        <a href="#consultation" onclick="closeDetailModal()" class="px-5 py-2.5 bg-orange-500 hover:bg-orange-400 text-white text-xs font-bold rounded-xl whitespace-nowrap transition shadow-md">
+        <a href="#consultation" onclick="closeDetailModal()" class="btn-gold px-6 py-3 rounded-xl text-xs font-bold whitespace-nowrap">
           진단 상담 신청하기
         </a>
       </div>
@@ -338,7 +242,7 @@ window.openAdmissionModal = function(id) {
 };
 
 /* ==========================================================================
-   4. 우리동네 교실 찾기 (Class Finder)
+   3. 우리동네 교실 찾기 (Find Class)
    ========================================================================== */
 function renderClasses(regionFilter = 'all', searchQuery = '') {
   const container = document.getElementById('class-list');
@@ -361,40 +265,40 @@ function renderClasses(regionFilter = 'all', searchQuery = '') {
 
   if (list.length === 0) {
     container.innerHTML = `
-      <div class="col-span-3 text-center py-16 bg-white rounded-2xl border border-slate-200">
-        <i class="fas fa-map-marker-alt text-4xl text-slate-300 mb-3"></i>
-        <p class="text-slate-600 font-semibold">검색 조건에 맞는 교실이 없습니다.</p>
-        <p class="text-xs text-slate-400 mt-1">고양파주지사로 문의하시면 인근 개설 예정 교실을 안내해 드립니다.</p>
+      <div class="col-span-3 text-center py-16 glass-panel">
+        <i class="fas fa-map-marker-alt text-4xl text-slate-600 mb-3"></i>
+        <p class="text-slate-300 font-semibold">검색 조건에 맞는 교실이 없습니다.</p>
+        <p class="text-xs text-slate-500 mt-1">고양파주지사로 문의하시면 인근 개설 예정 교실을 안내해 드립니다.</p>
       </div>
     `;
     return;
   }
 
   container.innerHTML = list.map(cls => `
-    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+    <div class="luxury-card p-6 flex flex-col justify-between">
       <div>
         <div class="flex items-center justify-between mb-3">
-          <span class="px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-100">${cls.regionLabel}</span>
-          <span class="text-xs font-medium text-slate-500"><i class="fas fa-user-tie mr-1 text-slate-400"></i>${cls.director}</span>
+          <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-amber-500/10 text-amber-300 border border-amber-500/20">${cls.regionLabel}</span>
+          <span class="text-xs text-slate-400"><i class="fas fa-user-tie mr-1 text-slate-500"></i>${cls.director}</span>
         </div>
-        <h4 class="text-lg font-bold text-slate-900 mb-2">${cls.name}</h4>
-        <p class="text-xs text-slate-500 mb-4 flex items-start gap-1.5">
-          <i class="fas fa-map-marker-alt text-red-500 mt-0.5"></i>
+        <h4 class="text-lg font-bold text-white mb-2">${cls.name}</h4>
+        <p class="text-xs text-slate-400 mb-4 flex items-start gap-1.5 leading-relaxed">
+          <i class="fas fa-map-marker-alt text-amber-500 mt-0.5"></i>
           <span>${cls.address}</span>
         </p>
 
         <div class="flex flex-wrap gap-1.5 mb-6">
-          ${cls.tags.map(tag => `<span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] rounded-md font-medium">#${tag}</span>`).join('')}
+          ${cls.tags.map(tag => `<span class="px-2 py-0.5 bg-white/5 text-slate-300 text-[10px] rounded font-medium border border-white/5">#${tag}</span>`).join('')}
         </div>
       </div>
 
-      <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-        <a href="tel:${cls.tel}" class="text-xs font-bold text-slate-700 hover:text-blue-700 flex items-center gap-1.5">
-          <i class="fas fa-phone-alt text-blue-600"></i>
+      <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+        <a href="tel:${cls.tel}" class="text-xs font-bold text-slate-300 hover:text-amber-400 flex items-center gap-1.5 transition">
+          <i class="fas fa-phone-alt text-amber-500"></i>
           <span>${cls.tel}</span>
         </a>
-        <button onclick="selectClassForConsultation('${cls.name}')" class="px-3 py-1.5 bg-orange-50 hover:bg-orange-600 text-orange-700 hover:text-white rounded-lg text-xs font-bold transition">
-          교실 상담예약
+        <button onclick="selectClassForConsultation('${cls.name}')" class="px-3.5 py-1.5 bg-amber-500/10 hover:bg-amber-500 text-amber-300 hover:text-slate-950 border border-amber-500/30 rounded-lg text-xs font-bold transition">
+          상담예약
         </button>
       </div>
     </div>
@@ -404,13 +308,12 @@ function renderClasses(regionFilter = 'all', searchQuery = '') {
 function initClassSearchAndFilter() {
   const regionChips = document.querySelectorAll('.region-chip');
   const searchInput = document.getElementById('class-search');
-
   let currentRegion = 'all';
 
   regionChips.forEach(chip => {
     chip.addEventListener('click', () => {
-      regionChips.forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
+      regionChips.forEach(c => c.classList.remove('active', 'bg-amber-500', 'text-slate-950'));
+      chip.classList.add('active', 'bg-amber-500', 'text-slate-950');
       currentRegion = chip.getAttribute('data-region');
       renderClasses(currentRegion, searchInput ? searchInput.value : '');
     });
@@ -437,36 +340,24 @@ window.selectClassForConsultation = function(className) {
 window.setConsultationBook = function(bookTitle) {
   const note = document.getElementById('consult-notes');
   if (note) {
-    note.value = `[관심 교재: ${bookTitle}]에 대해 상담받고 싶습니다.`;
+    note.value = `[관심 교재: ${bookTitle}]에 대해 1:1 상담받고 싶습니다.`;
   }
 };
 
 /* ==========================================================================
-   5. 가맹 혜택 및 후기 렌더링
+   4. 가맹 혜택 및 후기 렌더링
    ========================================================================== */
 function renderFranchiseAndReviews() {
   // 가맹 혜택
   const benefitsContainer = document.getElementById('franchise-benefits');
   if (benefitsContainer) {
     benefitsContainer.innerHTML = SITE_DATA.franchiseInfo.benefits.map(b => `
-      <div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm hover:border-orange-300 transition">
-        <div class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl mb-4">
+      <div class="glass-panel p-6 hover:border-amber-400/40 transition">
+        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-4 border border-amber-500/20">
           <i class="${b.icon}"></i>
         </div>
-        <h4 class="text-base font-bold text-slate-900 mb-2">${b.title}</h4>
-        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${b.desc}</p>
-      </div>
-    `).join('');
-  }
-
-  // 창업 프로세스
-  const stepsContainer = document.getElementById('franchise-steps');
-  if (stepsContainer) {
-    stepsContainer.innerHTML = SITE_DATA.franchiseInfo.steps.map(s => `
-      <div class="relative p-6 bg-slate-900 rounded-2xl border border-slate-800 text-white">
-        <span class="text-3xl font-black text-orange-500/40 mb-2 block font-mono">${s.step}</span>
-        <h4 class="text-base font-bold mb-2 text-white">${s.title}</h4>
-        <p class="text-xs text-slate-400 leading-relaxed">${s.desc}</p>
+        <h4 class="text-base font-bold text-white mb-2">${b.title}</h4>
+        <p class="text-xs text-slate-400 leading-relaxed">${b.desc}</p>
       </div>
     `).join('');
   }
@@ -475,18 +366,18 @@ function renderFranchiseAndReviews() {
   const reviewsContainer = document.getElementById('review-list');
   if (reviewsContainer) {
     reviewsContainer.innerHTML = SITE_DATA.reviews.map(r => `
-      <div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div class="glass-panel p-6 flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-bold rounded-md border border-amber-200">${r.tag}</span>
-            <div class="text-yellow-400 text-xs">
+            <span class="px-2.5 py-1 bg-amber-500/10 text-amber-300 text-xs font-bold rounded border border-amber-500/20">${r.tag}</span>
+            <div class="text-amber-400 text-xs">
               ${'<i class="fas fa-star"></i>'.repeat(r.rating)}
             </div>
           </div>
-          <p class="text-sm text-slate-700 leading-relaxed mb-6">"${r.text}"</p>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 italic">"${r.text}"</p>
         </div>
-        <div class="text-xs font-bold text-slate-500 pt-3 border-t border-slate-100 flex items-center gap-2">
-          <i class="fas fa-user-circle text-slate-400 text-base"></i>
+        <div class="text-xs font-bold text-slate-400 pt-3 border-t border-white/5 flex items-center gap-2">
+          <i class="fas fa-user-circle text-amber-500 text-base"></i>
           <span>${r.author}</span>
         </div>
       </div>
@@ -495,13 +386,12 @@ function renderFranchiseAndReviews() {
 }
 
 /* ==========================================================================
-   6. 상담 신청 폼
+   5. 상담 신청 폼
    ========================================================================== */
 function initConsultationForm() {
   const form = document.getElementById('consultation-form');
   if (!form) return;
 
-  // 교실 선택 옵션 주입
   const classSelect = document.getElementById('consult-class-select');
   if (classSelect) {
     SITE_DATA.classes.forEach(cls => {
@@ -519,21 +409,19 @@ function initConsultationForm() {
     const phone = document.getElementById('consult-phone').value;
     const type = document.querySelector('input[name="consult-type"]:checked').value;
     const targetClass = classSelect ? classSelect.value : '고양파주지사 직속';
-    const notes = document.getElementById('consult-notes').value;
 
     if (!name || !phone) {
       alert('신청자 성함과 연락처를 입력해 주세요.');
       return;
     }
 
-    // 가상 접수 처리 및 완료 안내
-    alert(`[상담 신청이 정상 접수되었습니다!]\n\n• 신청자: ${name} 님\n• 유형: ${type === 'student' ? '학부모 자녀 학습상담' : '원장님 가맹/창업 상담'}\n• 희망교실: ${targetClass || '전체/인근교실 배정'}\n\n고양파주지사 담당자가 기재해주신 번호(${phone})로 빠른 시간 내에 연락드리겠습니다.`);
+    alert(`[상담 신청이 정상 접수되었습니다!]\n\n• 신청자: ${name} 님\n• 상담 유형: ${type === 'student' ? '학부모 자녀 학습상담' : '원장님 가맹/창업 상담'}\n• 지정 교실: ${targetClass || '고양파주지사 직속'}\n\n고양파주지사 담당자가 ${phone} 번호로 빠르게 안내드리겠습니다.`);
     form.reset();
   });
 }
 
 /* ==========================================================================
-   7. 네비게이션 & 모달 시스템
+   6. 네비게이션 & 모달 시스템
    ========================================================================== */
 function initNavigation() {
   const navbar = document.getElementById('main-navbar');
@@ -541,7 +429,7 @@ function initNavigation() {
   const mobileMenu = document.getElementById('mobile-menu');
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 30) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');

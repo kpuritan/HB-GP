@@ -1,27 +1,37 @@
 @charset "UTF-8";
 
 /* ==========================================================================
-   해법독서논술 고양파주지사 Custom Stylesheet
+   해법독서논술 고양파주지사 High-End Luxury Edition Stylesheet
    ========================================================================== */
 
 :root {
-  --primary: #1e40af;       /* 신뢰감 있는 코발트 블루 */
-  --primary-dark: #1e3a8a;
-  --primary-light: #3b82f6;
-  --secondary: #ea580c;     /* 천재교육/해법 활력 오렌지 */
-  --secondary-light: #fb923c;
-  --accent: #10b981;        /* 에메랄드 그린 */
-  --dark: #0f172a;
-  --light-bg: #f8fafc;
-  --card-bg: #ffffff;
-  --border-color: #e2e8f0;
-  --text-main: #1e293b;
-  --text-muted: #64748b;
-  --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  --font-main: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Nanum Myeongjo', 'Batang', serif;
+
+  /* Luxury Dark & Gold & Royal Blue Palette */
+  --bg-main: #0B0F19;
+  --bg-card: rgba(17, 24, 39, 0.7);
+  --bg-card-hover: rgba(30, 41, 59, 0.9);
+  
+  --primary-navy: #0A1128;
+  --royal-blue: #1D4ED8;
+  --royal-blue-glow: rgba(29, 78, 216, 0.35);
+  
+  --gold-primary: #D4AF37;
+  --gold-light: #F6E05E;
+  --gold-gradient: linear-gradient(135deg, #F6D365 0%, #FDA085 100%);
+  --gold-luxury: linear-gradient(135deg, #ECC94B 0%, #D69E2E 50%, #B7791F 100%);
+
+  --text-pure: #FFFFFF;
+  --text-muted: #94A3B8;
+  --text-sub: #CBD5E1;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(212, 175, 55, 0.4);
 }
 
-/* 폰트 & 기본 설정 */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&display=swap');
 
 * {
   box-sizing: border-box;
@@ -31,207 +41,205 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: var(--font-sans);
-  color: var(--text-main);
-  background-color: #f1f5f9;
+  font-family: var(--font-main);
+  color: var(--text-pure);
+  background-color: #070B14;
 }
 
 body {
-  line-height: 1.65;
+  line-height: 1.7;
   overflow-x: hidden;
+  letter-spacing: -0.015em;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(29, 78, 216, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(212, 175, 55, 0.08) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.5) 0px, transparent 100%);
+  background-attachment: fixed;
 }
 
-/* 네이버 블로그 감성 서브 헤더 바 */
-.blog-bar {
-  background: linear-gradient(90deg, #1e3a8a 0%, #2563eb 100%);
-  color: white;
-  font-size: 0.85rem;
+/* 럭셔리 골드 텍스트 그러데이션 */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 50%, #D97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* 네비게이션 바 유리 모피즘 */
-.navbar-glass {
-  background: rgba(255, 255, 255, 0.96);
+.text-silver-gradient {
+  background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 50%, #94A3B8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 글래스모피즘 컨테이너 */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+}
+
+.glass-panel-gold {
+  background: rgba(20, 24, 38, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 24px;
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* 프리미엄 카드 인터랙션 */
+.luxury-card {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-  transition: all 0.3s ease;
+  border-radius: 20px;
 }
 
-.navbar-glass.scrolled {
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
-}
-
-/* 탭 버튼 스타일 */
-.category-tab {
-  transition: all 0.25s ease;
-  font-weight: 600;
-  border-bottom: 2px solid transparent;
-}
-
-.category-tab:hover {
-  color: var(--primary-light);
-}
-
-.category-tab.active {
-  color: var(--primary);
-  border-bottom: 2px solid var(--secondary);
-}
-
-/* 블로그 스타일 카드 뷰 */
-.blog-card {
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
-  background: #ffffff;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid #e2e8f0;
-}
-
-.blog-card:hover {
+.luxury-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 30px -6px rgba(15, 23, 42, 0.12);
-  border-color: #cbd5e1;
+  background: rgba(26, 36, 56, 0.85);
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(245, 158, 11, 0.2);
 }
 
-/* 교재 분석 카드 */
-.book-card {
+/* 네비게이션 바 */
+.nav-header {
+  background: rgba(7, 11, 20, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   transition: all 0.3s ease;
-  border: 1px solid #e2e8f0;
 }
 
-.book-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
-  border-color: var(--primary-light);
+.nav-header.scrolled {
+  background: rgba(7, 11, 20, 0.95);
+  border-bottom-color: rgba(245, 158, 11, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* 배지 스타일 */
-.badge-hot {
-  background: linear-gradient(135deg, #ef4444 0%, #ea580c 100%);
-  color: white;
-  font-size: 0.72rem;
+/* 골드 버튼 */
+.btn-gold {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #070B14;
   font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 9999px;
-  letter-spacing: -0.02em;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.35);
+  transition: all 0.3s ease;
 }
 
-.badge-brand {
-  background: #eff6ff;
-  color: #1d4ed8;
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 6px;
-  border: 1px solid #bfdbfe;
+.btn-gold:hover {
+  background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(245, 158, 11, 0.5);
 }
 
-/* 모달 시스템 */
+.btn-outline-gold {
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  color: #FDE68A;
+  background: rgba(245, 158, 11, 0.05);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-gold:hover {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: #F59E0B;
+  color: #FFFFFF;
+}
+
+/* 탭 버튼 */
+.tab-pill {
+  transition: all 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.6);
+  color: #94A3B8;
+}
+
+.tab-pill:hover {
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.tab-pill.active {
+  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+  color: #FFFFFF;
+  border-color: #3B82F6;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+/* 모달 */
 .modal-overlay {
-  background-color: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(4px);
-  transition: opacity 0.25s ease;
+  background: rgba(4, 7, 13, 0.85);
+  backdrop-filter: blur(12px);
 }
 
-.modal-content {
-  max-height: 90vh;
-  overflow-y: auto;
+.modal-container {
+  background: #0D1527;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(245, 158, 11, 0.15);
 }
 
-/* 부드러운 스크롤바 */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+/* 스크롤바 */
+::-webkit-scrollbar {
+  width: 8px;
 }
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f5f9;
+::-webkit-scrollbar-track {
+  background: #070B14;
 }
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
   border-radius: 4px;
+  border: 2px solid #070B14;
 }
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-/* 애니메이션 */
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 10px rgba(234, 88, 12, 0);
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
 }
 
-.pulse-btn {
-  animation: pulseGlow 2.5s infinite;
-}
-
-/* 고양파주 지역 지도/교실 위젯 */
-.region-chip {
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.region-chip.active {
-  background-color: #1e40af;
-  color: white;
-  font-weight: 700;
-  box-shadow: 0 4px 10px rgba(30, 64, 175, 0.25);
-}
-
-/* 네이버 블로그 스타일 프로필 위젯 */
-.profile-box {
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-}
-
-/* 서식 있는 텍스트 내부 스타일 */
-.prose-analysis h3 {
+/* 입시 칼럼 본문 서식 */
+.article-body h3 {
   font-size: 1.25rem;
-  font-weight: 700;
-  color: #1e3a8a;
-  margin-top: 1.5rem;
+  font-weight: 800;
+  color: #FDE68A;
+  margin-top: 1.75rem;
   margin-bottom: 0.75rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-
-.prose-analysis h3::before {
+.article-body h3::before {
   content: '';
   display: inline-block;
-  width: 4px;
+  width: 3px;
   height: 1.1rem;
-  background-color: #ea580c;
+  background: #F59E0B;
   border-radius: 2px;
 }
-
-.prose-analysis p {
-  margin-bottom: 1rem;
-  color: #334155;
-  line-height: 1.75;
-}
-
-.prose-analysis ul, .prose-analysis ol {
+.article-body p {
+  color: #CBD5E1;
+  font-size: 0.95rem;
+  line-height: 1.8;
   margin-bottom: 1.25rem;
+}
+.article-body strong {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+.article-body ul, .article-body ol {
+  color: #94A3B8;
   padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
 }
-
-.prose-analysis li {
+.article-body li {
   margin-bottom: 0.5rem;
-  color: #334155;
 }
 
-.prose-analysis strong {
-  color: #0f172a;
-  background: linear-gradient(180deg, transparent 65%, #fef08a 65%);
-}
-
-/* 인쇄 및 반응형 미디어 쿼리 */
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 1.85rem !important;
-    line-height: 1.35 !important;
-  }
+/* 은은한 배경 오라 효과 */
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
 }
