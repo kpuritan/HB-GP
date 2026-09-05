@@ -5,6 +5,7 @@ const SITE_DATA = {
   branchInfo: {
     name: "해법독서논술 고양파주지사",
     brandName: "해법독서논술 (BACCAL 바칼로레아)",
+    logoImg: "assets/logo.png",
     slogan: "대한민국 99.4% 학교가 선택한 천재교과서가 만든 독서토론논술",
     subSlogan: "독서논술과 학교공부를 한번에! 2028 대입 개편과 문해력 혁명의 중심",
     tel: "031-908-7909",
@@ -25,7 +26,7 @@ const SITE_DATA = {
   // 2. 본사 공식 [해법독서논술 소개]
   brandIntro: {
     title: "독서논술과 학교공부를 한번에!",
-    leadText: "해법독서논술은 천재교과서의 교과서 개발 노하우를 바탕으로, 독서를 통해 사고력을 키우고 토론과 논술로 표현하는 힘까지 완성하는 교과통합 논술 학원·공부방입니다.",
+    leadText: "해법독서논술은 천재교과서의 교과서 개발 노하우를 바탕으로, 독서를 통해 사고력을 키우고 토론과 논술로 표현하는 힘까지 완성하는 교과통합 논술 전문 프로그램입니다.",
     coreValues: [
       {
         number: "01",
@@ -50,58 +51,382 @@ const SITE_DATA = {
     ]
   },
 
-  // 3. 본사 공식 [프로그램] (4단계 학습시스템 & 3대 평가시스템)
-  programSystem: {
-    learningSteps: [
-      {
-        step: "STEP 01",
-        title: "생각 열기 (Introduction)",
-        icon: "fas fa-lightbulb",
-        color: "text-amber-500",
-        desc: "주제 질문, 시각 자료, 시사 이슈를 통해 학생의 지적 호기심을 자극하고 교과 관련 배경지식을 활성화합니다."
-      },
-      {
-        step: "STEP 02",
-        title: "생각 꺼내기 (Deep Reading)",
-        icon: "fas fa-book-reader",
-        color: "text-blue-600",
-        desc: "필독서를 정독하고 문단별 핵심어 찾기, 마인드맵, 인과관계 도식화를 통해 글의 구조와 뼈대를 완벽히 파악합니다."
-      },
-      {
-        step: "STEP 03",
-        title: "생각 나누기 (Debate & Discussion)",
-        icon: "fas fa-comments",
-        color: "text-emerald-600",
-        desc: "찬반 토론 및 CEDA 디베이트를 통해 자기 생각을 논리적으로 변론하고 타인의 의견을 경청하는 구술력을 키웁니다."
-      },
-      {
-        step: "STEP 04",
-        title: "생각 쓰기 (Writing & AI Feedback)",
-        icon: "fas fa-pen-nib",
-        color: "text-orange-600",
-        desc: "독서감상문, 논설문, 탐구보고서 등 갈래별 글쓰기를 수행하고 AI 분석 및 원장님의 1:1 대면 첨삭으로 글을 완성합니다."
-      }
-    ],
-    evaluations: [
-      {
-        badge: "진단 평가",
-        title: "독서능력진단 평가 (입회 전 / 정기)",
-        desc: "어휘력, 사실적 이해, 추론적 이해, 비판적 사고력 등 4대 영역을 종합 측정하여 학생에게 가장 적합한 맞춤 단계를 진단합니다."
-      },
-      {
-        badge: "AI 첨삭",
-        title: "천재교육 AI 글쓰기 첨삭 리포트",
-        desc: "생성형 AI 알고리즘이 문맥 호응, 맞춤법, 어휘의 다양성, 논리 전개 과정을 정밀 분석하여 학부모님께 과학적 성취도 리포트를 제공합니다."
-      },
-      {
-        badge: "성취도 점검",
-        title: "월별 국어·교과 성취도 평가",
-        desc: "매월 학습한 교과 어휘와 서술형 문제 해결력을 정기 평가하여 학교 내신 시험 및 수행평가 실전 경쟁력을 빈틈없이 관리합니다."
-      }
-    ]
+  // 3. 본사 공식 [프로그램 - 학습시스템 / 평가시스템 / 교재소개]
+  programs: {
+    // 1) 학습시스템 (2번째 사진 100% 동일 구현)
+    learningSystem: {
+      title: "학습시스템",
+      subtitle: "해법독서논술 교과연계 독서토론논술 프로그램",
+      quote: "해법독서논술 교과연계 독서토론논술 프로그램으로 사고력확장은 물론 학습능력까지 신장시켜 줍니다.",
+      steps: [
+        {
+          stepNumber: "Step 01",
+          name: "독서진단",
+          themeColor: "cyan", // 하늘색
+          badgeColor: "bg-[#00c2cb] text-white",
+          cardBg: "bg-cyan-50/70 border-cyan-100",
+          iconBg: "bg-[#00c2cb]",
+          icon: "fas fa-book-reader",
+          items: [
+            { title: "독서 진단평가", desc: "독서태도와 독서기초능력 진단" },
+            { title: "상담", desc: "독서진단 분석표를 토대로 상담" },
+            { title: "모둠배정", desc: "학생수준에 적당한 모둠배정" }
+          ]
+        },
+        {
+          stepNumber: "Step 02",
+          name: "자기주도",
+          themeColor: "blue", // 파란색
+          badgeColor: "bg-[#0284c7] text-white",
+          cardBg: "bg-sky-50/70 border-sky-100",
+          iconBg: "bg-[#0284c7]",
+          icon: "fas fa-clipboard-check",
+          items: [
+            { title: "책 읽기", desc: "교과 주제와 연계된 책 읽기" },
+            { title: "독서활동 점검", desc: "책 내용의 이해도 확인" },
+            { title: "생각 정리", desc: "스스로 사고하며 자기 생각 세우기" }
+          ]
+        },
+        {
+          stepNumber: "Step 03",
+          name: "모둠활동",
+          themeColor: "indigo", // 보라색
+          badgeColor: "bg-[#4f46e5] text-white",
+          cardBg: "bg-indigo-50/70 border-indigo-100",
+          iconBg: "bg-[#4f46e5]",
+          icon: "fas fa-users",
+          items: [
+            { title: "토의 · 토론", desc: "생각 나누기" },
+            { title: "글쓰기", desc: "자신의 생각을 글로 표현하기" },
+            { title: "발표하기", desc: "자신의 생각을 발표하고 피드백" }
+          ]
+        },
+        {
+          stepNumber: "Step 04",
+          name: "평가결과",
+          themeColor: "purple", // 자주/퍼플색
+          badgeColor: "bg-[#9333ea] text-white",
+          cardBg: "bg-purple-50/70 border-purple-100",
+          iconBg: "bg-[#9333ea]",
+          icon: "fas fa-award",
+          items: [
+            { title: "독서능력평가 · 국어능력평가", desc: "학습성취도 분석표 제공", singleLarge: true }
+          ]
+        }
+      ]
+    },
+
+    // 2) 평가시스템 (3번째 사진 100% 동일 구현)
+    evalSystem: {
+      title: "평가시스템",
+      subtitle: "독서 진단부터 국어능력평가까지!",
+      quote: "체계적인 평가시스템을 통해 아이의 독서능력을 정확하게 진단합니다.",
+      cards: [
+        {
+          id: "eval-01",
+          title: "독서종합검사",
+          badge: "기초능력",
+          badgeColor: "bg-[#0284c7] text-white",
+          gradient: "from-[#00c2cb] to-[#0284c7]",
+          icon: "fas fa-book-open",
+          illustrationType: "book",
+          targetText: "최초 상담 시,",
+          desc: "독서태도와 독서 기초능력 평가"
+        },
+        {
+          id: "eval-02",
+          title: "독서능력평가",
+          badge: "정기점검",
+          badgeColor: "bg-[#2563eb] text-white",
+          gradient: "from-[#0284c7] to-[#2563eb]",
+          icon: "fas fa-graduation-cap",
+          illustrationType: "cap",
+          targetText: "매월 학습하는 필독서 2권에 대한",
+          desc: "이해도 평가"
+        },
+        {
+          id: "eval-03",
+          title: "국어능력평가",
+          badge: "4대역량",
+          badgeColor: "bg-[#7c3aed] text-white",
+          gradient: "from-[#3b82f6] to-[#7c3aed]",
+          icon: "fas fa-spell-check",
+          illustrationType: "bubbles",
+          bubbles: ["어휘", "문법", "읽기", "쓰기"],
+          targetText: "매월 국어능력인",
+          desc: "어휘, 문법, 읽기, 쓰기 능력 평가"
+        }
+      ]
+    },
+
+    // 3) 교재소개 (공식 본사 hb-baccal.co.kr/program/book 100% 동일 데이터)
+    bookIntro: {
+      categories: [
+        {
+          id: "pre",
+          label: "예비초등",
+          books: [
+            {
+              id: "pre-01",
+              tag: "독서 습관 형성",
+              title: "읽기 친구 생각 친구",
+              target: "예비초등",
+              composition: "총 2set (1set 읽기 친구 리딩북 1권 + 생각친구 워크북 1권)",
+              features: [
+                "1set당 4편의 동화 수록",
+                "그림책 중심의 즐거운 읽기를 통해 독서에 대한 흥미 유발",
+                "또래와의 상호작용을 통해 자연스러운 어휘 표현 습득"
+              ],
+              detailHtml: "<b>[읽기 친구 생각 친구 상세 안내]</b><br>초등학교 입학 전 아동의 발달 수준에 맞춘 그림책과 동화로 구성되어 있으며, 책 읽는 즐거움을 느끼고 바른 독서 습관을 기릅니다."
+            },
+            {
+              id: "pre-02",
+              tag: "독서 습관 형성",
+              title: "교과연계 통합논술 프로그램",
+              target: "예비초등",
+              composition: "총 5set (1set 이야기 보따리 1권 + 말놀이 생각놀이 1권 + 또박또박 쓰기장 1권)",
+              features: [
+                "1set당 4편의 이야기 (전래동화 3편 + 1학년 교과대비 1편)",
+                "한글 쓰기 연습 및 선 긋기 기초 훈련 제공",
+                "풍부한 이야기와 말놀이로 어휘력과 상상력 확장"
+              ],
+              detailHtml: "<b>[교과연계 통합논술 (예비초등)]</b><br>1학년 1학기 국어 교과서 수록 도서 및 전래동화를 바탕으로 말하기, 듣기, 쓰기의 기초를 다집니다."
+            }
+          ]
+        },
+        {
+          id: "elem",
+          label: "초등",
+          books: [
+            {
+              id: "elem-01",
+              tag: "독서 습관 형성 & 교과연계",
+              title: "교과연계 통합논술 프로그램 (초등 1~6학년)",
+              target: "초등 1학년 ~ 초등 6학년",
+              composition: "학년별 12set (1set 필독서 2권 + 생각짱글짱 2권 + 시사독해 1권 + 교과논술 1권 + 국어능력 1권) ※ 초등 1,2학년 테마북",
+              features: [
+                "필독서 & 생각짱 글짱: 책 읽기 → 토의·토론 → 글쓰기 → 발표로 이어지는 교과연계 통합논술",
+                "시사독해: 독해전략을 활용하여 기사를 읽고, 시사 상식과 사고 확장",
+                "교과논술: 교과서 개념 이해 및 통합 교과 논술, 수행평가 서·논술형 대비",
+                "국어능력: 어휘부터 문법까지, 국어 기초 실력 향상"
+              ],
+              detailHtml: "<b>[초등 전학년 교과통합 완성 커리큘럼]</b><br>초등 1학년부터 6학년까지 학년별 발달 수준에 최적화된 필독서와 워크북으로, 교과 지식 습득은 물론 서술형 평가와 수행평가에 완벽 대비합니다."
+            }
+          ]
+        },
+        {
+          id: "mid",
+          label: "중등",
+          books: [
+            {
+              id: "mid-01",
+              tag: "중등 독서논술 기초 역량 형성 및 수행평가 대비",
+              title: "로스트럼 입문",
+              target: "예비중등 ~ 중등 3학년",
+              composition: "총 12set (필독서 1권 + 워크북 1권)",
+              features: [
+                "독서논술과 독해력 향상",
+                "어휘 학습 및 글쓰기 활동 강화",
+                "교과연계 학습 및 수행평가 능력 향상"
+              ],
+              detailHtml: "<b>[로스트럼 입문]</b><br>중학 국어 교과서 수록 문학 및 비문학 독해의 기본기를 다지고 논리적 글쓰기 틀을 정립합니다."
+            },
+            {
+              id: "mid-02",
+              tag: "진로탐색형 독서토론 논술",
+              title: "로스트럼 기본/심화",
+              target: "예비중등 ~ 중등 3학년",
+              composition: "총 12set (필독서 1권 + 워크북 1권 + 지문독해 실전 논술)",
+              features: [
+                "다양한 분야의 도서 및 진로 탐색 기회 제공",
+                "다양한 교과 지문 독해 및 통합형 실전 논술 대비",
+                "중등 국어 문법 완벽 정리"
+              ],
+              detailHtml: "<b>[로스트럼 기본/심화]</b><br>수능 비문학 독해 전략과 2028 대입 개편에 맞춘 고난도 서술형 논술, 진로 탐구보고서 작성을 완성합니다."
+            }
+          ]
+        },
+        {
+          id: "special",
+          label: "특강",
+          subCategories: [
+            {
+              subId: "history",
+              subLabel: "#역사",
+              books: [
+                {
+                  id: "hist-01",
+                  tag: "위인으로 만나는 초등 저학년 역사 논술",
+                  title: "우리 위인 이야기",
+                  target: "초등 2학년 ~ 초등 3학년",
+                  composition: "총 12set (1set 리딩북 1권 + 워크북 1권)",
+                  features: [
+                    "삼국시대부터 일제강점기까지 대표적인 역사적 위인 12명의 이야기",
+                    "다양한 분야에 대한 배경지식 습득 및 인성 교육"
+                  ]
+                },
+                {
+                  id: "hist-02",
+                  tag: "교과연계 역사논술 프로그램",
+                  title: "논술로 만나는 우리 역사",
+                  target: "초등 고학년",
+                  composition: "총 12set (1set 리딩북 4권 + 워크북 2권 역사짱짱 논술짱짱 / 역사전시관 연대표)",
+                  features: [
+                    "초등 사회/역사 교육과정 바탕 구성",
+                    "생활과 문화를 통한 역사 이해 및 주제 논술"
+                  ]
+                },
+                {
+                  id: "hist-03",
+                  tag: "교과연계/내신대비 역사 프로그램",
+                  title: "스토리텔링 세계사",
+                  target: "예비중등 ~ 중등",
+                  composition: "총 12set (1set 리딩북 1권 + 워크북 1권)",
+                  features: [
+                    "주요 나라별 역사의 맥락을 쉽고 재미있게 학습",
+                    "매 단원 지도와 연표를 통해 세계사 흐름 정리",
+                    "중·고등학교 세계사 내신 완벽 대비"
+                  ]
+                },
+                {
+                  id: "hist-04",
+                  tag: "교과연계/내신대비 역사 프로그램",
+                  title: "스토리텔링 한국사",
+                  target: "예비중 ~ 중등",
+                  composition: "총 4set (스토리텔링 한국사 3권 + 스토리텔링 근현대사 1권)",
+                  features: [
+                    "선사시대부터 현대사까지 한국사의 흐름을 쉽게 이해",
+                    "세계사의 흐름과 한국사 비교 구성 및 문제 풀이"
+                  ]
+                },
+                {
+                  id: "hist-05",
+                  tag: "주제 중심 한국사 프로그램",
+                  title: "꼭꼭 씹어먹는 한국사",
+                  target: "중등",
+                  composition: "총 2set (1set 필독서 1권 + 워크북 1권 + 연표)",
+                  features: [
+                    "삼국시대~조선후기 역사의 흐름 정복",
+                    "역사적인 쟁점을 통한 종합적인 글쓰기"
+                  ]
+                }
+              ]
+            },
+            {
+              subId: "science",
+              subLabel: "#과학",
+              books: [
+                {
+                  id: "sci-01",
+                  tag: "쉽고 재미있는 융합 과학 독서 프로그램",
+                  title: "큐리 앤 조이",
+                  target: "예비초 ~ 초등 저학년",
+                  composition: "총 12set (1set 리딩북 1권 + 워크북 1권)",
+                  features: [
+                    "QR영상으로 애니메이션 동화 제공",
+                    "누리과정과 초등 교육과정 기반 과학 호기심과 탐구력 자극"
+                  ]
+                },
+                {
+                  id: "sci-02",
+                  tag: "자연과학과 인문학의 융합과학논술",
+                  title: "사이언스토리",
+                  target: "초등 고학년",
+                  composition: "총 12set (1set 리딩북 1권 + 워크북 1권)",
+                  features: [
+                    "빅히스토리를 주제로 만든 최초의 초등 대상 융합과학논술",
+                    "물리+화학+지구과학+생명과학+역사+철학을 아우르는 통합 사고",
+                    "빅뱅이론, 우주 원리에 대한 QR 영상 제공"
+                  ]
+                },
+                {
+                  id: "sci-03",
+                  tag: "융합 과학 토론 프로그램",
+                  title: "디베이트 과학이슈",
+                  target: "예비중등 ~ 중등",
+                  composition: "총 12권 / 이슈북 1권",
+                  features: [
+                    "과학 관련 최신 논제와 사실을 근거로 한 CEDA 토론 프로그램",
+                    "교과연계 및 이공계 진로 탐색 체험"
+                  ]
+                }
+              ]
+            },
+            {
+              subId: "literature",
+              subLabel: "#문학",
+              books: [
+                {
+                  id: "lit-01",
+                  tag: "고전 작품의 지혜를 현대로 적용하는 토론·논술",
+                  title: "현대로 통하는 고전",
+                  target: "예비중등 ~ 중등",
+                  composition: "총 8set (1set 리딩북 1권 + 워크북 1권)",
+                  features: [
+                    "천재교과서가 엄선한 수능 / 모의평가 기출 고전 문학 작품",
+                    "고전 소설의 기본부터 수능 맛보기까지 완벽 대비"
+                  ]
+                },
+                {
+                  id: "lit-02",
+                  tag: "교과연계 문학 프로그램",
+                  title: "근현대와 만나는 단편소설",
+                  target: "예비중등 ~ 중등",
+                  composition: "총 6set (1set 리딩북 2권 + 워크북 2권)",
+                  features: [
+                    "중등 국어 교과서 수록 단편소설 엄선",
+                    "근대부터 현대까지 시대사 정리 및 사회·역사적 배경 이해"
+                  ]
+                },
+                {
+                  id: "lit-03",
+                  tag: "주제 중심 교과연계 문학 프로그램",
+                  title: "꼭꼭 씹어먹는 한국 단편 소설",
+                  target: "예비중등 ~ 중등",
+                  composition: "총 2set (1set 리딩북 1권 + 워크북 1권 / 4편의 작품)",
+                  features: [
+                    "중고등 국어 및 문학 교과서 수록 총 8편의 대표작",
+                    "소설의 갈래 이론을 바탕으로 작가의 의도와 주제 분석"
+                  ]
+                }
+              ]
+            },
+            {
+              subId: "writing",
+              subLabel: "#글쓰기",
+              books: [
+                {
+                  id: "wri-01",
+                  tag: "초등 글쓰기 기초 훈련",
+                  title: "초등 글쓰기",
+                  target: "예비초등 ~ 초등",
+                  composition: "총 2set (1set 리딩북 1권 + 워크북 1권)",
+                  features: [
+                    "[일기/독후감/표현력/주장하는글] 갈래별 글쓰기 마스터",
+                    "사물 관찰, 오감 활용, 은유·직유 등 생생한 묘사 훈련",
+                    "개요 작성과 논리적 문단 구성법 체득"
+                  ]
+                },
+                {
+                  id: "wri-02",
+                  tag: "중등 글쓰기 기초 훈련",
+                  title: "논리적 글쓰기",
+                  target: "예비중등 ~ 중등",
+                  composition: "총 4set (1set 워크북 1권)",
+                  features: [
+                    "문장 → 문단 → 완성된 글 순서로 글쓰기 체계 확립",
+                    "정의, 예시, 비교·대조, 분석 기법을 활용한 탄탄한 논증 형성"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
   },
 
-  // 4. [교재분석 - 교재 연구 아카이브 폴더 트리 구조]
+  // 4. [교재연구 - 교재 연구 아카이브 폴더 트리 구조]
   bookArchive: [
     {
       folderId: "folder-kinder",
@@ -191,7 +516,6 @@ const SITE_DATA = {
 
   // 5. [입시정보 - 글 칼럼 & 영상 큐레이션 이원화]
   admissionData: {
-    // 글 칼럼 (멋있고 전문적인 분석)
     articles: [
       {
         id: "art-01",
@@ -273,7 +597,6 @@ const SITE_DATA = {
       }
     ],
 
-    // 영상 큐레이션 (유튜브 및 전문가 입시 특강)
     videos: [
       {
         id: "vid-01",
@@ -374,73 +697,132 @@ const SITE_DATA = {
     ]
   },
 
-  // 7. [우리동네 교실 - 고양·파주 전 지역 총 18개 실제 교실 데이터베이스]
+  // 7. [고양파주 교실 - 실제 교실 정보 & 정확한 블로그/플레이스 링크 & 실제 교실 사진]
   classes: [
-    // 일산동구
+    // 고양시 덕양구
     {
-      id: "cls-01",
+      id: "cls-deok-01",
+      region: "deokyang",
+      regionLabel: "덕양구",
+      name: "신원해법독서논술교습소",
+      director: "수능·내신 국어 전문 원장",
+      address: "경기 고양시 덕양구 권율대로 885 (태웅프라자 2층)",
+      tel: "02-381-9981",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=신원해법독서논술+교습소",
+      mapUrl: "https://map.naver.com/p/search/고양시%20덕양구%20권율대로%20885%20신원해법독서논술",
+      tags: ["수능내신전문", "초중고독서논술", "서술논술", "역사논술"],
+      image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&auto=format&fit=crop&q=80"
+    },
+    {
+      id: "cls-deok-02",
+      region: "deokyang",
+      regionLabel: "덕양구",
+      name: "해법독서논술 덕은숲교실",
+      director: "디베이트 전문 원장",
+      address: "경기 고양시 덕양구 대덕산2길 10, 2층",
+      tel: "010-4820-7909",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+덕은숲교실",
+      mapUrl: "https://map.naver.com/p/search/고양시%20덕양구%20대덕산2길%2010%20해법독서논술",
+      tags: ["독서논술", "디베이트토론", "초등중등", "사고력확장"],
+      image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&auto=format&fit=crop&q=80"
+    },
+    {
+      id: "cls-deok-03",
+      region: "deokyang",
+      regionLabel: "덕양구",
+      name: "해법독서논술 화정달빛마을학원",
+      director: "김현정 원장",
+      address: "고양시 덕양구 화신로 화정 달빛마을 1단지 상가 3층",
+      tel: "031-967-1154",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+화정+달빛마을",
+      mapUrl: "https://map.naver.com/p/search/고양시%20덕양구%20화정%20달빛마을%20해법독서논술",
+      tags: ["화정논술", "역사탐방", "토론수업", "초중등연계"],
+      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80"
+    },
+    {
+      id: "cls-deok-04",
+      region: "deokyang",
+      regionLabel: "덕양구",
+      name: "해법독서논술 행신햇빛마을교실",
+      director: "오선경 원장",
+      address: "고양시 덕양구 행신로 햇빛마을 20단지 상가 2층",
+      tel: "031-973-4589",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+행신+햇빛마을",
+      mapUrl: "https://map.naver.com/p/search/고양시%20덕양구%20햇빛마을%2020단지%20해법독서논술",
+      tags: ["행신맘추천", "교과연계", "어휘력강화"],
+      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&auto=format&fit=crop&q=80"
+    },
+    {
+      id: "cls-deok-05",
+      region: "deokyang",
+      regionLabel: "덕양구",
+      name: "해법독서논술 원흥도래울학원",
+      director: "한미경 원장",
+      address: "고양시 덕양구 도래울로 도래울마을 센트럴파크 상가 2층",
+      tel: "02-356-4432",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+원흥+도래울",
+      mapUrl: "https://map.naver.com/p/search/고양시%20덕양구%20도래울로%20해법독서논술",
+      tags: ["독서토론", "서술형만점반", "한국사특강", "학부모상담"],
+      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80"
+    },
+
+    // 고양시 일산동구
+    {
+      id: "cls-dong-01",
       region: "ilsan-dong",
       regionLabel: "일산동구",
       name: "해법독서논술 백마마을교실",
       director: "김지은 원장",
       address: "고양시 일산동구 마두동 백마마을 3단지 상가 2층",
       tel: "031-904-8821",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+백마마을+일산",
+      mapUrl: "https://map.naver.com/p/search/고양시%20일산동구%20백마마을%203단지%20해법독서논술",
       tags: ["초등전문", "중등내신", "소수정예", "수행평가특화"],
       image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&auto=format&fit=crop&q=80"
     },
     {
-      id: "cls-02",
+      id: "cls-dong-02",
       region: "ilsan-dong",
       regionLabel: "일산동구",
       name: "해법독서논술 식사위시티학원",
       director: "박선영 원장",
       address: "고양시 일산동구 위시티로 식사동 메디컬프라자 4층",
       tel: "031-968-3312",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+식사동+위시티",
+      mapUrl: "https://map.naver.com/p/search/고양시%20일산동구%20식사동%20위시티%20해법독서논술",
       tags: ["초등바움", "중등로스트럼", "역사특강", "AI첨삭"],
       image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&auto=format&fit=crop&q=80"
     },
     {
-      id: "cls-03",
+      id: "cls-dong-03",
       region: "ilsan-dong",
       regionLabel: "일산동구",
       name: "해법독서논술 풍동숲속마을교실",
       director: "이선화 원장",
       address: "고양시 일산동구 숲속마을로 풍동 숲속마을 4단지 상가",
       tel: "031-901-4478",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+풍동+숲속마을",
+      mapUrl: "https://map.naver.com/p/search/고양시%20일산동구%20풍동%20숲속마을%20해법독서논술",
       tags: ["독서습관", "초등문해력", "창의글쓰기"],
       image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80"
     },
     {
-      id: "cls-04",
+      id: "cls-dong-04",
       region: "ilsan-dong",
       regionLabel: "일산동구",
       name: "해법독서논술 중산하늘마을교실",
       director: "정은주 원장",
       address: "고양시 일산동구 중산로 하늘마을 2단지 상가 2층",
       tel: "031-975-2231",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+중산+하늘마을",
+      mapUrl: "https://map.naver.com/p/search/고양시%20일산동구%20중산동%20하늘마을%20해법독서논술",
       tags: ["교과논술", "시사독해", "1:1첨삭"],
       image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&auto=format&fit=crop&q=80"
     },
 
-    // 일산서구
+    // 고양시 일산서구
     {
-      id: "cls-05",
-      region: "ilsan-seo",
-      regionLabel: "일산서구",
-      name: "해법독서논술 후곡학원가교실",
-      director: "이정미 원장",
-      address: "고양시 일산서구 일산로 후곡마을 9단지 앞 에이스빌딩 3층",
-      tel: "031-912-7745",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
-      tags: ["후곡명문", "수능국어연계", "디베이트토론", "고교학점제"],
-      image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&auto=format&fit=crop&q=80"
-    },
-    {
-      id: "cls-06",
+      id: "cls-seo-01",
       region: "ilsan-seo",
       regionLabel: "일산서구",
       name: "해법독서논술 & 생각의정원 학원 (가좌동)",
@@ -448,156 +830,141 @@ const SITE_DATA = {
       address: "고양시 일산서구 가좌동 가좌도서관 인근 드림빌딩 2층",
       tel: "031-914-7778",
       blogUrl: "https://blog.naver.com/9147778",
+      mapUrl: "https://map.naver.com/p/search/고양시%20일산서구%20가좌동%20생각의정원학원",
       tags: ["가좌명문", "역사논술", "시사한자", "토탈케어"],
       image: "https://images.unsplash.com/photo-1516534775068-ba3e7458af70?w=600&auto=format&fit=crop&q=80"
     },
     {
-      id: "cls-07",
+      id: "cls-seo-02",
+      region: "ilsan-seo",
+      regionLabel: "일산서구",
+      name: "해법독서논술 후곡학원가교실",
+      director: "이정미 원장",
+      address: "고양시 일산서구 일산로 후곡마을 9단지 앞 에이스빌딩 3층",
+      tel: "031-912-7745",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+일산+후곡",
+      mapUrl: "https://map.naver.com/p/search/고양시%20일산서구%20후곡마을%20해법독서논술",
+      tags: ["후곡명문", "수능국어연계", "디베이트토론", "고교학점제"],
+      image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&auto=format&fit=crop&q=80"
+    },
+    {
+      id: "cls-seo-03",
       region: "ilsan-seo",
       regionLabel: "일산서구",
       name: "해법독서논술 킨텍스원시티교실",
       director: "최유진 원장",
       address: "고양시 일산서구 킨텍스로 킨텍스원시티 상가 2층",
       tel: "031-925-6670",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+킨텍스+원시티",
+      mapUrl: "https://map.naver.com/p/search/킨텍스원시티%20해법독서논술",
       tags: ["예비초등", "창의글쓰기", "1:1밀착관리", "독서진단"],
       image: "https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&auto=format&fit=crop&q=80"
     },
     {
-      id: "cls-08",
+      id: "cls-seo-04",
       region: "ilsan-seo",
       regionLabel: "일산서구",
       name: "해법독서논술 탄현큰마을교실",
       director: "서민경 원장",
       address: "고양시 일산서구 일현로 탄현 큰마을 대림아파트 상가 3층",
       tel: "031-919-8902",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+탄현+큰마을",
+      mapUrl: "https://map.naver.com/p/search/탄현큰마을%20해법독서논술",
       tags: ["초등전문", "중등내신", "서술형만점"],
       image: "https://images.unsplash.com/photo-1560785496-3c9d27877182?w=600&auto=format&fit=crop&q=80"
     },
 
-    // 덕양구
+    // 파주시 야당/운정
     {
-      id: "cls-09",
-      region: "deokyang",
-      regionLabel: "덕양구",
-      name: "해법독서논술 화정달빛마을학원",
-      director: "김현정 원장",
-      address: "고양시 덕양구 화신로 화정 달빛마을 1단지 상가 3층",
-      tel: "031-967-1154",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
-      tags: ["화정논술", "역사탐방", "토론수업", "초중등연계"],
-      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80"
-    },
-    {
-      id: "cls-10",
-      region: "deokyang",
-      regionLabel: "덕양구",
-      name: "해법독서논술 행신햇빛마을교실",
-      director: "오선경 원장",
-      address: "고양시 덕양구 행신로 햇빛마을 20단지 상가 2층",
-      tel: "031-973-4589",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
-      tags: ["행신맘추천", "교과연계", "어휘력강화"],
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&auto=format&fit=crop&q=80"
-    },
-    {
-      id: "cls-11",
-      region: "deokyang",
-      regionLabel: "덕양구",
-      name: "해법독서논술 삼송신원교실",
-      director: "정하나 원장",
-      address: "고양시 덕양구 신원로 신원마을 상업지구 드림타워 3층",
-      tel: "02-381-9981",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
-      tags: ["초등교과논술", "시사독해", "자기주도학습", "방학특강"],
-      image: "https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&auto=format&fit=crop&q=80"
-    },
-    {
-      id: "cls-12",
-      region: "deokyang",
-      regionLabel: "덕양구",
-      name: "해법독서논술 원흥도래울학원",
-      director: "한미경 원장",
-      address: "고양시 덕양구 도래울로 도래울마을 센트럴파크 상가 2층",
-      tel: "02-356-4432",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
-      tags: ["독서토론", "서술형만점반", "한국사특강", "학부모상담"],
-      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80"
-    },
-
-    // 파주 운정
-    {
-      id: "cls-13",
-      region: "paju-unjeong",
-      regionLabel: "파주 운정",
-      name: "해법독서논술 운정산내교실 (푸르지오 상가)",
-      director: "강서윤 원장",
-      address: "파주시 청암로 운정 산내마을 중심 센트럴푸르지오 상가 2층",
-      tel: "031-948-1129",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
-      tags: ["운정맘추천", "산내푸르지오", "수능독서", "스피치토론"],
-      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80"
-    },
-    {
-      id: "cls-14",
+      id: "cls-paju-01",
       region: "paju-unjeong",
       regionLabel: "파주 운정",
       name: "해법독서논술 한빛롯데캐슬파크타운교실",
-      director: "윤민아 원장",
-      address: "파주시 야당동 야당역 앞 롯데캐슬파크타운 상가 3층",
+      director: "국어교육 전공 교사 직강",
+      address: "경기 파주시 와석순환로 16, 롯데캐슬파크타운 908동 상가",
       tel: "031-942-8876",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+한빛롯데캐슬파크타운",
+      mapUrl: "https://map.naver.com/p/search/파주시%20와석순환로%2016%20해법독서논술",
       tags: ["국어교육전공", "한빛롯데캐슬", "문학·역사·시사통합"],
       image: "https://images.unsplash.com/photo-1516534775068-ba3e7458af70?w=600&auto=format&fit=crop&q=80"
     },
     {
-      id: "cls-15",
+      id: "cls-paju-02",
+      region: "paju-unjeong",
+      regionLabel: "파주 운정",
+      name: "해법독서논술 한빛누마루교실",
+      director: "15년 경력 우수 원장 직강",
+      address: "경기 파주시 한빛로 70, 519동 (한빛마을 5단지 내)",
+      tel: "010-4820-7909",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+한빛누마루교실",
+      mapUrl: "https://map.naver.com/p/search/파주시%20한빛로%2070%20해법독서논술",
+      tags: ["15년경력원장", "우수교실선정", "내신대비전문", "책읽기즐거움"],
+      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80"
+    },
+    {
+      id: "cls-paju-03",
+      region: "paju-unjeong",
+      regionLabel: "파주 운정",
+      name: "으뜸해법독서논술교습소",
+      director: "통합 국어논술 전문 원장",
+      address: "경기 파주시 물향기2로 157, 정석프라자 3층 (동패동)",
+      tel: "031-948-1129",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=으뜸해법독서논술+동패동",
+      mapUrl: "https://map.naver.com/p/search/파주시%20물향기2로%20157%20으뜸해법독서논술",
+      tags: ["으뜸논술", "교과연계독해", "문법어휘", "초중등통합"],
+      image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80"
+    },
+    {
+      id: "cls-paju-04",
       region: "paju-unjeong",
       regionLabel: "파주 운정",
       name: "해법독서논술 운정가람마을교실",
       director: "조수진 원장",
       address: "파주시 가람로 가람마을 1단지 상가 2층",
       tel: "031-949-3341",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+운정+가람마을",
+      mapUrl: "https://map.naver.com/p/search/파주시%20가람로%20가람마을%20해법독서논술",
       tags: ["초등바움", "중등로스트럼", "AI첨삭"],
-      image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80"
+      image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80"
     },
 
-    // 파주 금촌 / 문산 / 교하
+    // 파주시 금촌 / 문산 / 교하
     {
-      id: "cls-16",
+      id: "cls-paju-05",
       region: "paju-etc",
       regionLabel: "파주 금촌/문산",
       name: "해법독서논술 금촌팜스프링교실",
       director: "오수현 원장",
       address: "파주시 아동로 팜스프링아파트 단지 내 상가 B동 2층",
       tel: "031-945-3390",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+금촌+팜스프링",
+      mapUrl: "https://map.naver.com/p/search/파주시%20아동로%20팜스프링%20해법독서논술",
       tags: ["기초문해력", "중등내신집중", "역사논술", "책읽기습관"],
       image: "https://images.unsplash.com/photo-1560785496-3c9d27877182?w=600&auto=format&fit=crop&q=80"
     },
     {
-      id: "cls-17",
+      id: "cls-paju-06",
       region: "paju-etc",
       regionLabel: "파주 금촌/문산",
       name: "해법독서논술 문산당동교실",
       director: "임혜숙 원장",
       address: "파주시 문산읍 당동2로 힐스테이트 1단지 상가 2층",
       tel: "031-952-6610",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+문산+당동",
+      mapUrl: "https://map.naver.com/p/search/문산읍%20당동%20해법독서논술",
       tags: ["문산논술", "초등전과목연계", "서술형만점"],
-      image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80"
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&auto=format&fit=crop&q=80"
     },
     {
-      id: "cls-18",
+      id: "cls-paju-07",
       region: "paju-etc",
       regionLabel: "파주 금촌/문산",
       name: "해법독서논술 교하노을빛교실",
       director: "박미라 원장",
       address: "파주시 책향기로 교하 노을빛마을 2단지 상가 2층",
       tel: "031-944-7822",
-      blogUrl: "https://blog.naver.com/PostList.naver?blogId=shalala009",
+      blogUrl: "https://search.naver.com/search.naver?where=blog&query=해법독서논술+교하+노을빛",
+      mapUrl: "https://map.naver.com/p/search/교하%20노을빛마을%20해법독서논술",
       tags: ["교하독서논술", "초등필독서", "토론수업"],
       image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&auto=format&fit=crop&q=80"
     }
