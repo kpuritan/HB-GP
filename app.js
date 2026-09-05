@@ -1,33 +1,90 @@
-// 해법독서논술 고양파주지사 웹 애플리케이션 - High-End Luxury Edition
+// 해법독서논술 고양파주지사 웹 애플리케이션 - Main Controller
 
 document.addEventListener('DOMContentLoaded', () => {
   initApp();
 });
 
 function initApp() {
-  // 1. 교재분석 섹션 렌더링 & 이벤트
+  // 1. [해법독서논술] 브랜드 기둥 렌더링
+  renderBrandPillars();
+
+  // 2. [프로그램] 학습시스템 & 평가시스템 렌더링
+  renderProgramSystems();
+
+  // 3. [교재분석] 렌더링 & 필터
   renderBookAnalyses('all');
   initBookFilter();
 
-  // 2. 입시정보 섹션 렌더링
+  // 4. [입시정보] 렌더링
   renderAdmissions();
 
-  // 3. 교실 찾기 렌더링 & 이벤트
+  // 5. [교실모집] 개설 모델, 7단계 절차, 혜택 렌더링
+  renderClassroomRecruit();
+
+  // 6. [우리동네 교실] 렌더링 & 검색/필터
   renderClasses('all');
   initClassSearchAndFilter();
 
-  // 4. 가맹/창업 혜택 및 후기 렌더링
-  renderFranchiseAndReviews();
-
-  // 5. 상담 신청 폼 처리
+  // 7. 상담 폼 및 공통 네비게이션
   initConsultationForm();
-
-  // 6. 모바일 메뉴 & 네비게이션 스크롤
   initNavigation();
 }
 
 /* ==========================================================================
-   1. 교재분석 섹션 (Book Analysis)
+   1. 브랜드 소개 기둥 (Brand Pillars)
+   ========================================================================== */
+function renderBrandPillars() {
+  const container = document.getElementById('brand-pillars');
+  if (!container || !SITE_DATA.brandIntro) return;
+
+  container.innerHTML = SITE_DATA.brandIntro.pillars.map(p => `
+    <div class="p-5 bg-slate-900/70 rounded-2xl border border-white/5 flex items-start gap-3.5 hover:border-amber-400/30 transition">
+      <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg shrink-0 border border-amber-500/20">
+        <i class="${p.icon}"></i>
+      </div>
+      <div>
+        <h4 class="font-bold text-white text-sm mb-1">${p.title}</h4>
+        <p class="text-xs text-slate-400 leading-relaxed">${p.desc}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ==========================================================================
+   2. 프로그램 (학습시스템 & 평가시스템)
+   ========================================================================== */
+function renderProgramSystems() {
+  // 4단계 학습 프로세스
+  const processContainer = document.getElementById('learning-process-list');
+  if (processContainer && SITE_DATA.programSystem.learningProcess) {
+    processContainer.innerHTML = SITE_DATA.programSystem.learningProcess.map(proc => `
+      <div class="glass-panel p-6 hover:border-amber-400/40 transition flex flex-col justify-between">
+        <div>
+          <span class="text-2xl font-black text-amber-400 font-mono block mb-2">STEP ${proc.step}</span>
+          <h4 class="text-base font-bold text-white mb-2">${proc.name}</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">${proc.desc}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // 3대 과학적 평가시스템
+  const evalContainer = document.getElementById('eval-system-list');
+  if (evalContainer && SITE_DATA.programSystem.evalSystem) {
+    evalContainer.innerHTML = SITE_DATA.programSystem.evalSystem.map(ev => `
+      <div class="glass-panel p-6 hover:border-blue-400/40 transition">
+        <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl mb-4 border border-blue-500/20">
+          <i class="${ev.icon}"></i>
+        </div>
+        <h4 class="text-base font-bold text-white mb-2">${ev.title}</h4>
+        <p class="text-xs text-slate-400 leading-relaxed">${ev.desc}</p>
+      </div>
+    `).join('');
+  }
+}
+
+/* ==========================================================================
+   3. 교재분석 섹션 (Book Analysis)
    ========================================================================== */
 function renderBookAnalyses(filter = 'all') {
   const container = document.getElementById('book-analysis-list');
@@ -157,7 +214,7 @@ window.openBookModal = function(id) {
 };
 
 /* ==========================================================================
-   2. 입시정보 섹션 (Admissions)
+   4. 입시정보 섹션 (Admissions)
    ========================================================================== */
 function renderAdmissions() {
   const container = document.getElementById('admission-list');
@@ -242,7 +299,80 @@ window.openAdmissionModal = function(id) {
 };
 
 /* ==========================================================================
-   3. 우리동네 교실 찾기 (Find Class)
+   5. 교실모집 (Recruit & Franchise)
+   ========================================================================== */
+function renderClassroomRecruit() {
+  const recruit = SITE_DATA.classroomRecruit;
+  if (!recruit) return;
+
+  // 3대 개설 모델
+  const modelsContainer = document.getElementById('classroom-models');
+  if (modelsContainer) {
+    modelsContainer.innerHTML = recruit.models.map(m => `
+      <div class="glass-panel p-6 sm:p-8 hover:border-amber-400/50 transition flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-300 text-xs font-bold border border-amber-500/30">${m.badge}</span>
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg">
+              <i class="${m.icon}"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-extrabold text-white mb-2">${m.type}</h3>
+          <p class="text-xs text-amber-300 font-semibold mb-4">추천: ${m.target}</p>
+          <ul class="space-y-2 mb-6">
+            ${m.features.map(f => `
+              <li class="text-xs text-slate-300 flex items-start gap-2">
+                <i class="fas fa-check text-amber-400 mt-0.5"></i>
+                <span>${f}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+        <a href="#consultation" onclick="setConsultationRecruit('${m.type}')" class="btn-outline-gold py-2.5 text-center rounded-xl text-xs font-bold block">
+          ${m.type} 개설 상담신청
+        </a>
+      </div>
+    `).join('');
+  }
+
+  // 7단계 개설 절차
+  const procedureContainer = document.getElementById('recruit-procedure');
+  if (procedureContainer) {
+    procedureContainer.innerHTML = recruit.procedure.map(proc => `
+      <div class="p-4 bg-slate-900/90 rounded-xl border border-white/5 text-center flex flex-col justify-between">
+        <span class="text-xs font-black text-amber-400 font-mono block mb-1">STEP ${proc.step}</span>
+        <h5 class="text-xs font-bold text-white mb-1">${proc.title}</h5>
+        <p class="text-[11px] text-slate-400 leading-snug">${proc.desc}</p>
+      </div>
+    `).join('');
+  }
+
+  // 지사 혜택
+  const benefitsContainer = document.getElementById('recruit-benefits');
+  if (benefitsContainer) {
+    benefitsContainer.innerHTML = recruit.benefits.map(b => `
+      <div class="glass-panel p-6 hover:border-amber-400/40 transition">
+        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-4 border border-amber-500/20">
+          <i class="${b.icon}"></i>
+        </div>
+        <h4 class="text-base font-bold text-white mb-2">${b.title}</h4>
+        <p class="text-xs text-slate-400 leading-relaxed">${b.desc}</p>
+      </div>
+    `).join('');
+  }
+}
+
+window.setConsultationRecruit = function(modelType) {
+  const typeRadio = document.querySelector('input[name="consult-type"][value="franchise"]');
+  if (typeRadio) typeRadio.checked = true;
+  const note = document.getElementById('consult-notes');
+  if (note) {
+    note.value = `[${modelType}] 가맹/개설 상담을 희망합니다.`;
+  }
+};
+
+/* ==========================================================================
+   6. 우리동네 교실 찾기 (Find Class)
    ========================================================================== */
 function renderClasses(regionFilter = 'all', searchQuery = '') {
   const container = document.getElementById('class-list');
@@ -345,48 +475,7 @@ window.setConsultationBook = function(bookTitle) {
 };
 
 /* ==========================================================================
-   4. 가맹 혜택 및 후기 렌더링
-   ========================================================================== */
-function renderFranchiseAndReviews() {
-  // 가맹 혜택
-  const benefitsContainer = document.getElementById('franchise-benefits');
-  if (benefitsContainer) {
-    benefitsContainer.innerHTML = SITE_DATA.franchiseInfo.benefits.map(b => `
-      <div class="glass-panel p-6 hover:border-amber-400/40 transition">
-        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-4 border border-amber-500/20">
-          <i class="${b.icon}"></i>
-        </div>
-        <h4 class="text-base font-bold text-white mb-2">${b.title}</h4>
-        <p class="text-xs text-slate-400 leading-relaxed">${b.desc}</p>
-      </div>
-    `).join('');
-  }
-
-  // 후기
-  const reviewsContainer = document.getElementById('review-list');
-  if (reviewsContainer) {
-    reviewsContainer.innerHTML = SITE_DATA.reviews.map(r => `
-      <div class="glass-panel p-6 flex flex-col justify-between">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-1 bg-amber-500/10 text-amber-300 text-xs font-bold rounded border border-amber-500/20">${r.tag}</span>
-            <div class="text-amber-400 text-xs">
-              ${'<i class="fas fa-star"></i>'.repeat(r.rating)}
-            </div>
-          </div>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 italic">"${r.text}"</p>
-        </div>
-        <div class="text-xs font-bold text-slate-400 pt-3 border-t border-white/5 flex items-center gap-2">
-          <i class="fas fa-user-circle text-amber-500 text-base"></i>
-          <span>${r.author}</span>
-        </div>
-      </div>
-    `).join('');
-  }
-}
-
-/* ==========================================================================
-   5. 상담 신청 폼
+   7. 상담 신청 폼 & 네비게이션
    ========================================================================== */
 function initConsultationForm() {
   const form = document.getElementById('consultation-form');
@@ -415,14 +504,11 @@ function initConsultationForm() {
       return;
     }
 
-    alert(`[상담 신청이 정상 접수되었습니다!]\n\n• 신청자: ${name} 님\n• 상담 유형: ${type === 'student' ? '학부모 자녀 학습상담' : '원장님 가맹/창업 상담'}\n• 지정 교실: ${targetClass || '고양파주지사 직속'}\n\n고양파주지사 담당자가 ${phone} 번호로 빠르게 안내드리겠습니다.`);
+    alert(`[상담 신청이 정상 접수되었습니다!]\n\n• 신청자: ${name} 님\n• 상담 유형: ${type === 'student' ? '학부모 자녀 학습상담' : '원장님 교실모집(가맹/창업) 문의'}\n• 지정 교실: ${targetClass || '고양파주지사 직속'}\n\n고양파주지사 담당자가 ${phone} 번호로 빠르게 안내드리겠습니다.`);
     form.reset();
   });
 }
 
-/* ==========================================================================
-   6. 네비게이션 & 모달 시스템
-   ========================================================================== */
 function initNavigation() {
   const navbar = document.getElementById('main-navbar');
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
