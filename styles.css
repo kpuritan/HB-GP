@@ -1,0 +1,237 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   해법독서논술 고양파주지사 Custom Stylesheet
+   ========================================================================== */
+
+:root {
+  --primary: #1e40af;       /* 신뢰감 있는 코발트 블루 */
+  --primary-dark: #1e3a8a;
+  --primary-light: #3b82f6;
+  --secondary: #ea580c;     /* 천재교육/해법 활력 오렌지 */
+  --secondary-light: #fb923c;
+  --accent: #10b981;        /* 에메랄드 그린 */
+  --dark: #0f172a;
+  --light-bg: #f8fafc;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+}
+
+/* 폰트 & 기본 설정 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  color: var(--text-main);
+  background-color: #f1f5f9;
+}
+
+body {
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* 네이버 블로그 감성 서브 헤더 바 */
+.blog-bar {
+  background: linear-gradient(90deg, #1e3a8a 0%, #2563eb 100%);
+  color: white;
+  font-size: 0.85rem;
+}
+
+/* 네비게이션 바 유리 모피즘 */
+.navbar-glass {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.3s ease;
+}
+
+.navbar-glass.scrolled {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+}
+
+/* 탭 버튼 스타일 */
+.category-tab {
+  transition: all 0.25s ease;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+}
+
+.category-tab:hover {
+  color: var(--primary-light);
+}
+
+.category-tab.active {
+  color: var(--primary);
+  border-bottom: 2px solid var(--secondary);
+}
+
+/* 블로그 스타일 카드 뷰 */
+.blog-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px -6px rgba(15, 23, 42, 0.12);
+  border-color: #cbd5e1;
+}
+
+/* 교재 분석 카드 */
+.book-card {
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+  border-color: var(--primary-light);
+}
+
+/* 배지 스타일 */
+.badge-hot {
+  background: linear-gradient(135deg, #ef4444 0%, #ea580c 100%);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  letter-spacing: -0.02em;
+}
+
+.badge-brand {
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #bfdbfe;
+}
+
+/* 모달 시스템 */
+.modal-overlay {
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.25s ease;
+}
+
+.modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* 부드러운 스크롤바 */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* 애니메이션 */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(234, 88, 12, 0);
+  }
+}
+
+.pulse-btn {
+  animation: pulseGlow 2.5s infinite;
+}
+
+/* 고양파주 지역 지도/교실 위젯 */
+.region-chip {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.region-chip.active {
+  background-color: #1e40af;
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(30, 64, 175, 0.25);
+}
+
+/* 네이버 블로그 스타일 프로필 위젯 */
+.profile-box {
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+}
+
+/* 서식 있는 텍스트 내부 스타일 */
+.prose-analysis h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.prose-analysis h3::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 1.1rem;
+  background-color: #ea580c;
+  border-radius: 2px;
+}
+
+.prose-analysis p {
+  margin-bottom: 1rem;
+  color: #334155;
+  line-height: 1.75;
+}
+
+.prose-analysis ul, .prose-analysis ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.prose-analysis li {
+  margin-bottom: 0.5rem;
+  color: #334155;
+}
+
+.prose-analysis strong {
+  color: #0f172a;
+  background: linear-gradient(180deg, transparent 65%, #fef08a 65%);
+}
+
+/* 인쇄 및 반응형 미디어 쿼리 */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 1.85rem !important;
+    line-height: 1.35 !important;
+  }
+}
