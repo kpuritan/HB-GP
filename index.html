@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>해법독서논술 고양파주지사 | 천재교과서 바칼로레아 (BACCAL)</title>
   
-  <meta name="description" content="대한민국 99.4% 학교가 선택한 천재교과서 해법독서논술 바칼로레아(BACCAL) 고양파주지사. 교재연구 폴더, 입시칼럼 및 영상, 일산·파주 전 지역 18개 교실 안내.">
+  <meta name="description" content="대한민국 99.4% 학교가 선택한 천재교과서 해법독서논술 바칼로레아(BACCAL) 고양파주지사. 교재연구, 입시정보, 일산·파주 전 지역 18개 교실 안내.">
   <meta property="og:title" content="해법독서논술 고양파주지사">
   <meta property="og:description" content="독서논술과 학교공부를 한번에! 2028 수능 통합 국어와 서·논술형 평가 완벽 대비">
   <meta property="og:image" content="https://image.hbedu.co.kr:446/baccal/www2025/img/common/og_baccal_r.png">
@@ -41,14 +41,14 @@
   <!-- 상단 공지 & 본사 연결 핫라인 바 -->
   <div class="top-notice-bar py-2 px-4 sm:px-8">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-      <div class="flex items-center gap-3 text-xs">
+      <div class="flex items-center gap-3 text-xs whitespace-nowrap">
         <span class="flex items-center gap-1.5 font-bold text-sky-400">
           <i class="fas fa-crown"></i> 대한민국 99.4% 학교가 선택한 천재교과서
         </span>
         <span class="text-slate-700">|</span>
         <span class="hidden md:inline text-slate-300">고양·파주 지역 총괄지사 직영</span>
       </div>
-      <div class="flex items-center gap-4 text-xs">
+      <div class="flex items-center gap-4 text-xs whitespace-nowrap">
         <a href="https://www.hb-baccal.co.kr" target="_blank" rel="noopener noreferrer" class="hover:text-sky-300 transition flex items-center gap-1 text-slate-300">
           <i class="fas fa-external-link-alt text-sky-400"></i> 본사(BACCAL)
         </a>
@@ -64,27 +64,27 @@
     </div>
   </div>
 
-  <!-- 글로벌 네비게이션 헤더 (상단 폴더 메뉴를 통한 즉시 화면 전환) -->
+  <!-- 글로벌 네비게이션 헤더 (GNB) - 글자 줄바꿈 완벽 방지 -->
   <header class="navbar-clean sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
+      <div class="flex items-center justify-between h-20 gap-4">
         
-        <!-- 로고 (클릭 시 홈 화면으로 이동) -->
-        <button onclick="switchView('home')" class="flex items-center gap-3 text-left group focus:outline-none">
-          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-sky-500/20 group-hover:scale-105 transition duration-300">
+        <!-- 좌측 상단 로고 (해법독서논술 + 눈에 띄는 고양파주지사 뱃지) -->
+        <button onclick="switchView('home')" class="flex items-center gap-3 text-left group focus:outline-none shrink-0 whitespace-nowrap">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-sky-500/20 group-hover:scale-105 transition duration-300 shrink-0">
             <i class="fas fa-graduation-cap text-xl"></i>
           </div>
           <div>
             <div class="flex items-center gap-2">
-              <span class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">해법독서논술</span>
-              <span class="px-2 py-0.5 rounded-md text-[10px] font-black bg-sky-100 text-sky-800 border border-sky-200">고양파주지사</span>
+              <span class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight whitespace-nowrap">해법독서논술</span>
+              <span class="badge-goyangpaju">고양파주지사</span>
             </div>
-            <p class="text-[10px] font-black tracking-widest text-sky-600 uppercase">CHUNJAE BACCAL ESSAY</p>
+            <p class="text-[10px] font-black tracking-widest text-sky-600 uppercase whitespace-nowrap">CHUNJAE BACCAL ESSAY</p>
           </div>
         </button>
 
-        <!-- 상단 탭 폴더 메뉴 (스크롤 없이 바로 전환) -->
-        <nav class="hidden lg:flex items-center space-x-1.5">
+        <!-- 상단 탭 폴더 메뉴 (글자 줄바꿈 절대 없음) -->
+        <nav class="hidden xl:flex items-center space-x-1 shrink-0 whitespace-nowrap">
           <button onclick="switchView('brand')" class="nav-tab-btn" data-target-view="brand">
             <i class="fas fa-book-open text-xs"></i>
             <span>해법독서논술</span>
@@ -95,34 +95,34 @@
           </button>
           <button onclick="switchView('book')" class="nav-tab-btn text-sky-700 font-black" data-target-view="book">
             <i class="fas fa-folder-open text-xs text-sky-600"></i>
-            <span>교재연구 폴더</span>
+            <span>교재연구</span>
             <span class="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"></span>
           </button>
           <button onclick="switchView('admission')" class="nav-tab-btn text-blue-700 font-black" data-target-view="admission">
             <i class="fas fa-newspaper text-xs text-blue-600"></i>
-            <span>입시칼럼 & 영상</span>
+            <span>입시정보</span>
             <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
           </button>
           <button onclick="switchView('recruit')" class="nav-tab-btn" data-target-view="recruit">
             <i class="fas fa-door-open text-xs"></i>
-            <span>교실모집 (창업)</span>
+            <span>교실모집</span>
           </button>
-          <button onclick="switchView('class')" class="nav-tab-btn" data-target-view="class">
-            <i class="fas fa-map-marked-alt text-xs"></i>
-            <span>우리동네 교실</span>
+          <button onclick="switchView('class')" class="nav-tab-btn text-emerald-700 font-black" data-target-view="class">
+            <i class="fas fa-map-marked-alt text-xs text-emerald-600"></i>
+            <span>고양파주 교실</span>
           </button>
         </nav>
 
-        <!-- CTA 버튼 (1:1 상담 화면 전환) -->
-        <div class="hidden sm:flex items-center gap-3">
+        <!-- 우측 1:1 상담 버튼 -->
+        <div class="hidden sm:flex items-center shrink-0 whitespace-nowrap">
           <button onclick="switchView('consultation')" class="btn-orange px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 shadow-sm">
             <i class="fas fa-edit"></i>
-            <span>1:1 상담 예약</span>
+            <span>1:1 상담예약</span>
           </button>
         </div>
 
         <!-- 모바일 토글 -->
-        <div class="flex lg:hidden">
+        <div class="flex xl:hidden">
           <button id="mobile-menu-btn" class="p-2.5 rounded-xl bg-slate-100 text-slate-700 hover:text-sky-600 border border-slate-200">
             <i class="fas fa-bars text-xl"></i>
           </button>
@@ -131,32 +131,32 @@
     </div>
 
     <!-- 모바일 드롭다운 메뉴 -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-2 text-sm font-bold shadow-xl">
-      <button onclick="switchView('home')" class="w-full text-left py-2 text-slate-700 hover:text-sky-600 flex items-center gap-2">
+    <div id="mobile-menu" class="hidden xl:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-2 text-sm font-bold shadow-xl">
+      <button onclick="switchView('home')" class="w-full text-left py-2 text-slate-700 hover:text-sky-600 flex items-center gap-2 whitespace-nowrap">
         <i class="fas fa-home text-xs text-slate-400"></i> 홈 화면
       </button>
-      <button onclick="switchView('brand')" class="w-full text-left py-2 text-slate-700 hover:text-sky-600 flex items-center gap-2">
+      <button onclick="switchView('brand')" class="w-full text-left py-2 text-slate-700 hover:text-sky-600 flex items-center gap-2 whitespace-nowrap">
         <i class="fas fa-book-open text-xs text-slate-400"></i> 해법독서논술 소개
       </button>
-      <button onclick="switchView('program')" class="w-full text-left py-2 text-slate-700 hover:text-sky-600 flex items-center gap-2">
-        <i class="fas fa-layer-group text-xs text-slate-400"></i> 프로그램 (학습·평가 시스템)
+      <button onclick="switchView('program')" class="w-full text-left py-2 text-slate-700 hover:text-sky-600 flex items-center gap-2 whitespace-nowrap">
+        <i class="fas fa-layer-group text-xs text-slate-400"></i> 프로그램 시스템
       </button>
-      <button onclick="switchView('book')" class="w-full text-left py-2 text-sky-700 font-black flex items-center justify-between">
-        <span class="flex items-center gap-2"><i class="fas fa-folder-open text-xs text-sky-600"></i> 교재연구 폴더</span>
+      <button onclick="switchView('book')" class="w-full text-left py-2 text-sky-700 font-black flex items-center justify-between whitespace-nowrap">
+        <span class="flex items-center gap-2"><i class="fas fa-folder-open text-xs text-sky-600"></i> 교재연구</span>
         <span class="px-2 py-0.5 bg-sky-100 text-sky-700 text-[10px] rounded-full">연구실</span>
       </button>
-      <button onclick="switchView('admission')" class="w-full text-left py-2 text-blue-700 font-black flex items-center justify-between">
-        <span class="flex items-center gap-2"><i class="fas fa-newspaper text-xs text-blue-600"></i> 입시칼럼 & 영상관</span>
+      <button onclick="switchView('admission')" class="w-full text-left py-2 text-blue-700 font-black flex items-center justify-between whitespace-nowrap">
+        <span class="flex items-center gap-2"><i class="fas fa-newspaper text-xs text-blue-600"></i> 입시정보</span>
         <span class="px-2 py-0.5 bg-blue-100 text-blue-700 text-[10px] rounded-full">2028 대입</span>
       </button>
-      <button onclick="switchView('recruit')" class="w-full text-left py-2 text-slate-700 hover:text-sky-600 flex items-center gap-2">
-        <i class="fas fa-door-open text-xs text-slate-400"></i> 교실모집 (공부방/교습소/학원)
+      <button onclick="switchView('recruit')" class="w-full text-left py-2 text-slate-700 hover:text-sky-600 flex items-center gap-2 whitespace-nowrap">
+        <i class="fas fa-door-open text-xs text-slate-400"></i> 교실모집 (가맹/창업)
       </button>
-      <button onclick="switchView('class')" class="w-full text-left py-2 text-slate-700 hover:text-sky-600 flex items-center gap-2">
-        <i class="fas fa-map-marked-alt text-xs text-slate-400"></i> 우리동네 교실 (18개 지점)
+      <button onclick="switchView('class')" class="w-full text-left py-2 text-emerald-700 font-black flex items-center gap-2 whitespace-nowrap">
+        <i class="fas fa-map-marked-alt text-xs text-emerald-600"></i> 고양파주 교실 (18개 지점)
       </button>
-      <button onclick="switchView('consultation')" class="w-full btn-orange py-2.5 text-center rounded-xl mt-2 font-bold block">
-        1:1 빠른 상담신청
+      <button onclick="switchView('consultation')" class="w-full btn-orange py-2.5 text-center rounded-xl mt-2 font-bold block whitespace-nowrap">
+        1:1 빠른 상담예약
       </button>
     </div>
   </header>
@@ -169,7 +169,7 @@
     <!-- [VIEW 1] 첫 화면 (심플, 명료한 대문 & 6대 폴더 허브) -->
     <div id="view-home" class="view-panel active">
       <div class="text-center max-w-3xl mx-auto pt-6 pb-10">
-        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-sky-100 text-sky-800 text-xs font-bold mb-6">
+        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-sky-100 text-sky-800 text-xs font-bold mb-6 whitespace-nowrap">
           <i class="fas fa-sparkles text-sky-600"></i>
           <span>독서논술과 학교공부를 한번에! 천재교과서 45년 교육 노하우</span>
         </span>
@@ -188,10 +188,10 @@
               <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition">
                 <i class="fas fa-folder-open"></i>
               </div>
-              <h3 class="font-extrabold text-slate-900 text-base group-hover:text-sky-600 transition mb-1">교재연구 폴더 🌟</h3>
+              <h3 class="font-extrabold text-slate-900 text-base group-hover:text-sky-600 transition mb-1 whitespace-nowrap">교재연구 🌟</h3>
               <p class="text-xs text-slate-500">예비초부터 중등 로스트럼까지 단계별 연구 아카이브</p>
             </div>
-            <span class="text-xs font-bold text-sky-600 mt-4 flex items-center gap-1">열기 <i class="fas fa-arrow-right text-[10px]"></i></span>
+            <span class="text-xs font-bold text-sky-600 mt-4 flex items-center gap-1 whitespace-nowrap">열기 <i class="fas fa-arrow-right text-[10px]"></i></span>
           </button>
 
           <button onclick="switchView('admission')" class="clean-card p-5 hover:border-blue-400 transition flex flex-col justify-between group text-left">
@@ -199,10 +199,10 @@
               <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition">
                 <i class="fas fa-newspaper"></i>
               </div>
-              <h3 class="font-extrabold text-slate-900 text-base group-hover:text-blue-700 transition mb-1">입시칼럼 & 영상관 🌟</h3>
-              <p class="text-xs text-slate-500">2028 대입 개편 심층 칼럼 및 EBS 다큐 영상</p>
+              <h3 class="font-extrabold text-slate-900 text-base group-hover:text-blue-700 transition mb-1 whitespace-nowrap">입시정보 🌟</h3>
+              <p class="text-xs text-slate-500">2028 대입 개편 심층 칼럼 및 입시 영상 큐레이션</p>
             </div>
-            <span class="text-xs font-bold text-blue-600 mt-4 flex items-center gap-1">열기 <i class="fas fa-arrow-right text-[10px]"></i></span>
+            <span class="text-xs font-bold text-blue-600 mt-4 flex items-center gap-1 whitespace-nowrap">열기 <i class="fas fa-arrow-right text-[10px]"></i></span>
           </button>
 
           <button onclick="switchView('class')" class="clean-card p-5 hover:border-emerald-400 transition flex flex-col justify-between group text-left">
@@ -210,10 +210,10 @@
               <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition">
                 <i class="fas fa-map-marked-alt"></i>
               </div>
-              <h3 class="font-extrabold text-slate-900 text-base group-hover:text-emerald-700 transition mb-1">우리동네 교실 (18곳)</h3>
+              <h3 class="font-extrabold text-slate-900 text-base group-hover:text-emerald-700 transition mb-1 whitespace-nowrap">고양파주 교실 (18곳)</h3>
               <p class="text-xs text-slate-500">일산·덕양·운정·금촌 교실 블로그 및 수업 사진</p>
             </div>
-            <span class="text-xs font-bold text-emerald-600 mt-4 flex items-center gap-1">열기 <i class="fas fa-arrow-right text-[10px]"></i></span>
+            <span class="text-xs font-bold text-emerald-600 mt-4 flex items-center gap-1 whitespace-nowrap">열기 <i class="fas fa-arrow-right text-[10px]"></i></span>
           </button>
 
           <button onclick="switchView('brand')" class="clean-card p-5 hover:border-sky-400 transition flex flex-col justify-between group text-left">
@@ -221,10 +221,10 @@
               <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition">
                 <i class="fas fa-book-open"></i>
               </div>
-              <h3 class="font-extrabold text-slate-900 text-base group-hover:text-sky-600 transition mb-1">해법독서논술 소개</h3>
+              <h3 class="font-extrabold text-slate-900 text-base group-hover:text-sky-600 transition mb-1 whitespace-nowrap">해법독서논술 소개</h3>
               <p class="text-xs text-slate-500">교과통합 사고력과 천재교과서 45년 교육철학</p>
             </div>
-            <span class="text-xs font-bold text-slate-600 mt-4 flex items-center gap-1">열기 <i class="fas fa-arrow-right text-[10px]"></i></span>
+            <span class="text-xs font-bold text-slate-600 mt-4 flex items-center gap-1 whitespace-nowrap">열기 <i class="fas fa-arrow-right text-[10px]"></i></span>
           </button>
 
           <button onclick="switchView('program')" class="clean-card p-5 hover:border-sky-400 transition flex flex-col justify-between group text-left">
@@ -232,10 +232,10 @@
               <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition">
                 <i class="fas fa-layer-group"></i>
               </div>
-              <h3 class="font-extrabold text-slate-900 text-base group-hover:text-indigo-600 transition mb-1">프로그램 시스템</h3>
+              <h3 class="font-extrabold text-slate-900 text-base group-hover:text-indigo-600 transition mb-1 whitespace-nowrap">프로그램 시스템</h3>
               <p class="text-xs text-slate-500">4단계 학습 프로세스 및 3대 과학적 평가시스템</p>
             </div>
-            <span class="text-xs font-bold text-indigo-600 mt-4 flex items-center gap-1">열기 <i class="fas fa-arrow-right text-[10px]"></i></span>
+            <span class="text-xs font-bold text-indigo-600 mt-4 flex items-center gap-1 whitespace-nowrap">열기 <i class="fas fa-arrow-right text-[10px]"></i></span>
           </button>
 
           <button onclick="switchView('recruit')" class="clean-card p-5 hover:border-orange-400 transition flex flex-col justify-between group text-left">
@@ -243,10 +243,10 @@
               <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-700 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition">
                 <i class="fas fa-door-open"></i>
               </div>
-              <h3 class="font-extrabold text-slate-900 text-base group-hover:text-orange-600 transition mb-1">교실모집 (가맹창업)</h3>
+              <h3 class="font-extrabold text-slate-900 text-base group-hover:text-orange-600 transition mb-1 whitespace-nowrap">교실모집 (가맹창업)</h3>
               <p class="text-xs text-slate-500">공부방/교습소/학원 3대 개설 모델 및 7단계 절차</p>
             </div>
-            <span class="text-xs font-bold text-orange-600 mt-4 flex items-center gap-1">열기 <i class="fas fa-arrow-right text-[10px]"></i></span>
+            <span class="text-xs font-bold text-orange-600 mt-4 flex items-center gap-1 whitespace-nowrap">열기 <i class="fas fa-arrow-right text-[10px]"></i></span>
           </button>
 
         </div>
@@ -258,9 +258,9 @@
       <div class="mb-8 flex items-center justify-between border-b border-slate-200 pb-4">
         <div>
           <span class="text-xs font-bold text-sky-600">BRAND IDENTITY</span>
-          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">해법독서논술 소개</h2>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1 whitespace-nowrap">해법독서논술 소개</h2>
         </div>
-        <button onclick="switchView('home')" class="text-xs font-bold text-slate-500 hover:text-slate-900 flex items-center gap-1 bg-white px-3 py-1.5 rounded-lg border border-slate-200">
+        <button onclick="switchView('home')" class="text-xs font-bold text-slate-500 hover:text-slate-900 flex items-center gap-1 bg-white px-3 py-1.5 rounded-lg border border-slate-200 whitespace-nowrap">
           <i class="fas fa-home"></i> 홈으로
         </button>
       </div>
@@ -294,14 +294,13 @@
       <div class="mb-8 flex items-center justify-between border-b border-slate-200 pb-4">
         <div>
           <span class="text-xs font-bold text-sky-600">CURRICULUM SYSTEM</span>
-          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">프로그램 시스템</h2>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1 whitespace-nowrap">프로그램 시스템</h2>
         </div>
-        <button onclick="switchView('home')" class="text-xs font-bold text-slate-500 hover:text-slate-900 flex items-center gap-1 bg-white px-3 py-1.5 rounded-lg border border-slate-200">
+        <button onclick="switchView('home')" class="text-xs font-bold text-slate-500 hover:text-slate-900 flex items-center gap-1 bg-white px-3 py-1.5 rounded-lg border border-slate-200 whitespace-nowrap">
           <i class="fas fa-home"></i> 홈으로
         </button>
       </div>
 
-      <!-- 4단계 학습 프로세스 -->
       <div class="mb-12">
         <h3 class="text-lg font-black text-slate-900 mb-4 flex items-center gap-2">
           <i class="fas fa-layer-group text-sky-600"></i> 4단계 자기주도 학습 프로세스
@@ -311,7 +310,6 @@
         </div>
       </div>
 
-      <!-- 3대 과학적 평가시스템 -->
       <div>
         <h3 class="text-lg font-black text-slate-900 mb-4 flex items-center gap-2">
           <i class="fas fa-chart-pie text-blue-600"></i> 3대 과학적 평가시스템
@@ -322,20 +320,20 @@
       </div>
     </div>
 
-    <!-- [VIEW 4] 교재연구 폴더 (체계적 아카이브 전용 화면) -->
+    <!-- [VIEW 4] 교재연구 (체계적 아카이브 전용 화면) -->
     <div id="view-book" class="view-panel">
       <div class="mb-8 flex items-center justify-between border-b border-slate-200 pb-4">
         <div>
           <span class="text-xs font-bold text-sky-600">RESEARCH ARCHIVE</span>
-          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">교재 연구실 아카이브</h2>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1 whitespace-nowrap">교재연구 아카이브</h2>
         </div>
-        <button onclick="switchView('home')" class="text-xs font-bold text-slate-500 hover:text-slate-900 flex items-center gap-1 bg-white px-3 py-1.5 rounded-lg border border-slate-200">
+        <button onclick="switchView('home')" class="text-xs font-bold text-slate-500 hover:text-slate-900 flex items-center gap-1 bg-white px-3 py-1.5 rounded-lg border border-slate-200 whitespace-nowrap">
           <i class="fas fa-home"></i> 홈으로
         </button>
       </div>
 
       <p class="text-xs sm:text-sm text-slate-600 mb-6">
-        📁 발달 단계별 교재 연구 폴더를 클릭하시면 세부 연구 보고서와 지도 포인트를 확인하실 수 있습니다.
+        📁 발달 단계별 교재연구 폴더를 클릭하시면 세부 연구 보고서와 지도 포인트를 확인하실 수 있습니다.
       </p>
 
       <div id="book-archive-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -343,16 +341,15 @@
       </div>
     </div>
 
-    <!-- [VIEW 5] 입시칼럼 & 영상관 전용 화면 -->
+    <!-- [VIEW 5] 입시정보 전용 화면 (글 칼럼 & 영상관) -->
     <div id="view-admission" class="view-panel">
       <div class="mb-8 flex items-center justify-between border-b border-slate-200 pb-4">
         <div>
-          <span class="text-xs font-bold text-blue-700">2028 EXAM & MEDIA</span>
-          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">입시정보 & 영상관</h2>
+          <span class="text-xs font-bold text-blue-700">2028 ENTRANCE EXAM</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1 whitespace-nowrap">입시정보</h2>
         </div>
         
-        <!-- 탭 전환 (글 vs 영상) -->
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 whitespace-nowrap">
           <div class="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-200 shadow-sm">
             <button id="tab-btn-article" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white transition flex items-center gap-1">
               <i class="fas fa-file-alt"></i> 칼럼 (글)
@@ -378,24 +375,22 @@
       </div>
     </div>
 
-    <!-- [VIEW 6] 교실모집 (가맹창업) 전용 화면 -->
+    <!-- [VIEW 6] 교실모집 전용 화면 -->
     <div id="view-recruit" class="view-panel">
       <div class="mb-8 flex items-center justify-between border-b border-slate-200 pb-4">
         <div>
           <span class="text-xs font-bold text-orange-600">FRANCHISE RECRUITMENT</span>
-          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">해법독서논술 교실모집</h2>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1 whitespace-nowrap">해법독서논술 교실모집</h2>
         </div>
-        <button onclick="switchView('home')" class="text-xs font-bold text-slate-500 hover:text-slate-900 flex items-center gap-1 bg-white px-3 py-1.5 rounded-lg border border-slate-200">
+        <button onclick="switchView('home')" class="text-xs font-bold text-slate-500 hover:text-slate-900 flex items-center gap-1 bg-white px-3 py-1.5 rounded-lg border border-slate-200 whitespace-nowrap">
           <i class="fas fa-home"></i> 홈으로
         </button>
       </div>
 
-      <!-- 3대 개설 모델 -->
       <div id="classroom-models" class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
         <!-- JS 렌더링 -->
       </div>
 
-      <!-- 7단계 개설 절차 -->
       <div class="mb-10">
         <h3 class="text-base font-black text-slate-900 mb-4">체계적인 7단계 안심 개설 절차</h3>
         <div id="recruit-procedure" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5">
@@ -403,22 +398,20 @@
         </div>
       </div>
 
-      <!-- 혜택 -->
       <div id="recruit-benefits" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- JS 렌더링 -->
       </div>
     </div>
 
-    <!-- [VIEW 7] 우리동네 교실 (18곳) 전용 화면 -->
+    <!-- [VIEW 7] 고양파주 교실 (18곳) 전용 화면 -->
     <div id="view-class" class="view-panel">
       <div class="mb-8 flex flex-col md:flex-row md:items-center justify-between border-b border-slate-200 pb-4 gap-4">
         <div>
           <span class="text-xs font-bold text-emerald-700">OUR NETWORK</span>
-          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">우리동네 교실 찾기 (고양·파주 18곳)</h2>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1 whitespace-nowrap">고양파주 교실 (18곳)</h2>
         </div>
         
-        <div class="flex items-center gap-2">
-          <!-- 지역 필터 칩 -->
+        <div class="flex items-center gap-2 whitespace-nowrap">
           <div class="flex flex-wrap items-center gap-1.5">
             <button data-region="all" class="region-tab active">전체 (18)</button>
             <button data-region="ilsan-dong" class="region-tab">일산동구</button>
@@ -433,27 +426,26 @@
         </div>
       </div>
 
-      <!-- 교실 카드 그리드 (18개) -->
       <div id="class-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         <!-- JS 렌더링 -->
       </div>
     </div>
 
-    <!-- [VIEW 8] 1:1 빠른 상담 신청 전용 화면 -->
+    <!-- [VIEW 8] 1:1 상담예약 전용 화면 -->
     <div id="view-consultation" class="view-panel">
       <div class="mb-8 flex items-center justify-between border-b border-slate-200 pb-4">
         <div>
           <span class="text-xs font-bold text-orange-600">CONSULTATION</span>
-          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">1:1 맞춤 상담 신청</h2>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1 whitespace-nowrap">1:1 맞춤 상담예약</h2>
         </div>
-        <button onclick="switchView('home')" class="text-xs font-bold text-slate-500 hover:text-slate-900 flex items-center gap-1 bg-white px-3 py-1.5 rounded-lg border border-slate-200">
+        <button onclick="switchView('home')" class="text-xs font-bold text-slate-500 hover:text-slate-900 flex items-center gap-1 bg-white px-3 py-1.5 rounded-lg border border-slate-200 whitespace-nowrap">
           <i class="fas fa-home"></i> 홈으로
         </button>
       </div>
 
       <div class="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-md">
         <form id="consultation-form" class="space-y-5">
-          <div class="flex items-center justify-center gap-6 bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs font-bold">
+          <div class="flex items-center justify-center gap-6 bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs font-bold whitespace-nowrap">
             <label class="flex items-center gap-1.5 cursor-pointer">
               <input type="radio" name="consult-type" value="student" checked class="accent-orange-500">
               <span>학부모 자녀 학습상담</span>
@@ -466,24 +458,24 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">신청자 성함 *</label>
+              <label class="block text-xs font-bold text-slate-700 mb-1 whitespace-nowrap">신청자 성함 *</label>
               <input type="text" id="consult-name" required placeholder="예: 홍길동" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-sky-500">
             </div>
             <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">연락처 *</label>
+              <label class="block text-xs font-bold text-slate-700 mb-1 whitespace-nowrap">연락처 *</label>
               <input type="tel" id="consult-phone" required placeholder="010-0000-0000" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-sky-500">
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">희망 교실</label>
+              <label class="block text-xs font-bold text-slate-700 mb-1 whitespace-nowrap">희망 교실</label>
               <select id="consult-class-select" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-sky-500">
                 <option value="">고양파주지사 (가까운 교실 자동 매칭)</option>
               </select>
             </div>
             <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">대상 학년 / 창업 형태</label>
+              <label class="block text-xs font-bold text-slate-700 mb-1 whitespace-nowrap">대상 학년 / 창업 형태</label>
               <select id="consult-grade" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-sky-500">
                 <option value="예비초(6~7세)">예비초 (6~7세)</option>
                 <option value="초등 1~2학년">초등 1~2학년</option>
@@ -498,12 +490,12 @@
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">문의 사항</label>
+            <label class="block text-xs font-bold text-slate-700 mb-1 whitespace-nowrap">문의 사항</label>
             <textarea id="consult-notes" rows="3" placeholder="궁금하신 내용이나 관심 있는 교재, 지역을 자유롭게 적어주세요." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-sky-500"></textarea>
           </div>
 
           <div class="text-center pt-2">
-            <button type="submit" class="btn-orange w-full py-3.5 rounded-xl text-sm font-bold shadow-md">
+            <button type="submit" class="btn-orange w-full py-3.5 rounded-xl text-sm font-bold shadow-md whitespace-nowrap">
               상담 신청 접수하기
             </button>
           </div>
@@ -516,7 +508,7 @@
   <!-- 푸터 -->
   <footer class="border-t border-slate-200 bg-slate-900 py-8 text-xs text-slate-400 mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 whitespace-nowrap">
         <div class="w-6 h-6 rounded-lg bg-sky-600 text-white flex items-center justify-center font-black text-xs">
           <i class="fas fa-graduation-cap"></i>
         </div>
@@ -524,11 +516,11 @@
         <span class="text-slate-600">|</span>
         <span>대표전화: 031-908-7909</span>
       </div>
-      <p class="text-[11px] text-slate-500">Copyright © 해법독서논술 고양파주지사. All Rights Reserved.</p>
+      <p class="text-[11px] text-slate-500 whitespace-nowrap">Copyright © 해법독서논술 고양파주지사. All Rights Reserved.</p>
     </div>
   </footer>
 
-  <!-- 공통 상세 모달 (교재 연구 보고서 & 입시 칼럼) -->
+  <!-- 공통 상세 모달 -->
   <div id="detail-modal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
     <div class="modal-content-box max-w-2xl w-full p-6 sm:p-8 custom-scrollbar relative max-h-[85vh] overflow-y-auto">
       <button onclick="closeDetailModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-xl p-2 rounded-full hover:bg-slate-100 transition" aria-label="닫기">
