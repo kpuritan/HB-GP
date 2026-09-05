@@ -1,35 +1,23 @@
 @charset "UTF-8";
 
 /* ==========================================================================
-   해법독서논술 고양파주지사 Bright & Warm Premium Reading Education Theme
+   해법독서논술 고양파주지사 High-End Modern Reading Academy Stylesheet
    ========================================================================== */
 
 :root {
-  --primary-navy: #1E3A8A;
-  --primary-dark: #0F172A;
-  --brand-orange: #FF6B00;
-  --brand-orange-light: #FFF4EC;
-  --brand-orange-hover: #EA580C;
-  --brand-yellow: #F59E0B;
-  --brand-green: #059669;
-  --brand-green-light: #ECFDF5;
-
-  --bg-page: #F8FAFC;
-  --bg-white: #FFFFFF;
-  --bg-warm: #FFFBF5;
-  --bg-soft-blue: #F0F7FF;
-
-  --text-main: #1E293B;
+  --brand-blue: #0284C7;        /* 바칼로레아 하늘색/청량한 블루 */
+  --brand-navy: #0F2942;        /* 본사 딥 네이비 */
+  --brand-orange: #FF6B00;      /* 해법 시그니처 오렌지 */
+  --brand-orange-light: #FFF7ED;
+  --bg-creme: #FAFBFD;
+  --bg-card: #FFFFFF;
+  --text-dark: #0F172A;
+  --text-body: #334155;
   --text-muted: #64748B;
-  --text-sub: #475569;
-
-  --border-light: #E2E8F0;
-  --border-warm: #FED7AA;
-  --border-focus: #3B82F6;
-
-  --shadow-soft: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
-  --shadow-card: 0 10px 30px -4px rgba(15, 23, 42, 0.08);
-  --shadow-hover: 0 20px 35px -6px rgba(234, 88, 12, 0.15);
+  --border-subtle: #E2E8F0;
+  --border-focus: #0284C7;
+  --shadow-premium: 0 10px 30px -4px rgba(15, 41, 66, 0.07), 0 4px 12px -2px rgba(15, 41, 66, 0.03);
+  --shadow-hover: 0 20px 40px -10px rgba(2, 132, 199, 0.18), 0 10px 20px -5px rgba(15, 23, 42, 0.05);
 }
 
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
@@ -43,8 +31,8 @@
 html {
   scroll-behavior: smooth;
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: var(--text-main);
-  background-color: var(--bg-page);
+  color: var(--text-body);
+  background-color: var(--bg-creme);
 }
 
 body {
@@ -54,111 +42,91 @@ body {
   background: #FFFFFF;
 }
 
-/* 상단 탑바 */
-.top-notice-bar {
-  background-color: #0F172A;
-  color: #E2E8F0;
+/* 상단 톱바 */
+.top-bar {
+  background-color: #0B192C;
+  color: #94A3B8;
   font-size: 0.8rem;
 }
 
-/* 네비게이션 헤더 */
+/* 공식 바칼로레아 블루 헤더 */
 .navbar-clean {
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(16px);
   border-bottom: 1px solid #E2E8F0;
   transition: all 0.3s ease;
 }
 
 .navbar-clean.scrolled {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px rgba(15, 41, 66, 0.08);
   border-bottom-color: #CBD5E1;
 }
 
-/* GNB 메뉴 링크 */
-.gnb-link {
+/* GNB 메뉴 */
+.gnb-item {
   color: #334155;
   font-weight: 700;
+  font-size: 0.95rem;
   transition: all 0.2s ease;
-  position: relative;
   padding: 0.5rem 0;
+  position: relative;
 }
 
-.gnb-link:hover {
-  color: var(--brand-orange);
+.gnb-item:hover {
+  color: var(--brand-blue);
 }
 
-.gnb-link.active {
-  color: var(--primary-navy);
+.gnb-item.active {
+  color: var(--brand-navy);
 }
 
-/* 프리미엄 오렌지 버튼 */
-.btn-primary-orange {
-  background: linear-gradient(135deg, #FF781E 0%, #EA580C 100%);
+/* 프리미엄 버튼 */
+.btn-brand-orange {
+  background: linear-gradient(135deg, #FF6B00 0%, #EA580C 100%);
   color: #FFFFFF;
-  font-weight: 700;
-  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.3);
+  font-weight: 800;
+  box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-primary-orange:hover {
-  background: linear-gradient(135deg, #FF8F3D 0%, #C2410C 100%);
+.btn-brand-orange:hover {
+  background: linear-gradient(135deg, #FF802B 0%, #D9480F 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(234, 88, 12, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4);
 }
 
-/* 네이비 서브 버튼 */
-.btn-secondary-navy {
-  background: #1E3A8A;
+.btn-brand-blue {
+  background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
   color: #FFFFFF;
-  font-weight: 700;
-  transition: all 0.25s ease;
+  font-weight: 800;
+  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-secondary-navy:hover {
-  background: #1E40AF;
+.btn-brand-blue:hover {
+  background: linear-gradient(135deg, #38BDF8 0%, #0284C7 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.25);
+  box-shadow: 0 8px 25px rgba(2, 132, 199, 0.4);
 }
 
-/* 밝고 부드러운 카드 디자인 */
-.edu-card {
+/* 프리미엄 카드 */
+.card-clean {
   background: #FFFFFF;
   border-radius: 20px;
   border: 1px solid #E2E8F0;
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-premium);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.edu-card:hover {
-  transform: translateY(-6px);
-  border-color: #FED7AA;
-  box-shadow: 0 20px 40px -10px rgba(234, 88, 12, 0.12), 0 10px 20px -5px rgba(15, 23, 42, 0.04);
+.card-clean:hover {
+  transform: translateY(-5px);
+  border-color: #BAE6FD;
+  box-shadow: var(--shadow-hover);
 }
 
-/* 책갈피 / 리딩 뱃지 */
-.badge-book {
-  background-color: #FFF7ED;
-  color: #C2410C;
-  border: 1px solid #FFEDD5;
-  font-weight: 700;
-  font-size: 0.75rem;
-  padding: 0.25rem 0.65rem;
-  border-radius: 8px;
-}
-
-.badge-blue {
-  background-color: #EFF6FF;
-  color: #1D4ED8;
-  border: 1px solid #DBEAFE;
-  font-weight: 700;
-  font-size: 0.75rem;
-  padding: 0.25rem 0.65rem;
-  border-radius: 8px;
-}
-
-/* 탭 필터 버튼 */
-.reading-tab {
-  padding: 0.65rem 1.25rem;
+/* 탭 버튼 */
+.pill-tab {
+  padding: 0.65rem 1.35rem;
   font-size: 0.875rem;
   font-weight: 700;
   border-radius: 12px;
@@ -169,93 +137,83 @@ body {
   cursor: pointer;
 }
 
-.reading-tab:hover {
+.pill-tab:hover {
   border-color: #CBD5E1;
   color: #0F172A;
 }
 
-.reading-tab.active {
-  background: #1E3A8A;
+.pill-tab.active {
+  background: #0284C7;
   color: #FFFFFF;
-  border-color: #1E3A8A;
-  box-shadow: 0 4px 14px rgba(30, 58, 138, 0.25);
+  border-color: #0284C7;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
 }
 
-/* 지역 칩 */
-.region-chip {
-  padding: 0.5rem 1rem;
-  font-size: 0.825rem;
-  font-weight: 600;
-  border-radius: 10px;
-  background: #F1F5F9;
-  color: #475569;
+/* 폴더 트리 아카이브 카드 */
+.folder-card {
+  background: #FFFFFF;
+  border-radius: 18px;
   border: 1px solid #E2E8F0;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   cursor: pointer;
 }
 
-.region-chip:hover {
-  background: #E2E8F0;
-  color: #0F172A;
+.folder-card:hover {
+  background: #F0F9FF;
+  border-color: #38BDF8;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.1);
 }
 
-.region-chip.active {
-  background: #FF6B00;
-  color: #FFFFFF;
-  border-color: #FF6B00;
-  font-weight: 700;
-  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25);
-}
-
-/* 모달 스타일 */
-.modal-backdrop {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(6px);
-}
-
-.modal-sheet {
-  background: #FFFFFF;
-  border-radius: 28px;
-  border: 1px solid #CBD5E1;
-  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.25);
-}
-
-/* 입시 칼럼 본문 서식 (밝은 배경용) */
-.column-prose h3 {
+/* 칼럼 본문 서식 */
+.prose-column h3 {
   font-size: 1.25rem;
   font-weight: 800;
-  color: #1E3A8A;
+  color: #0F2942;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-.column-prose h3::before {
+.prose-column h3::before {
   content: '';
   display: inline-block;
   width: 4px;
   height: 1.2rem;
-  background: #FF6B00;
+  background: #0284C7;
   border-radius: 2px;
 }
-.column-prose p {
+.prose-column p {
   color: #334155;
   font-size: 0.95rem;
   line-height: 1.8;
   margin-bottom: 1.25rem;
 }
-.column-prose strong {
+.prose-column strong {
   color: #0F172A;
-  background: linear-gradient(180deg, transparent 65%, #FEF08A 65%);
+  background: linear-gradient(180deg, transparent 65%, #BAE6FD 65%);
 }
-.column-prose ul, .column-prose ol {
+.prose-column ul, .prose-column ol {
   color: #475569;
   padding-left: 1.5rem;
   margin-bottom: 1.25rem;
 }
-.column-prose li {
+.prose-column li {
   margin-bottom: 0.5rem;
+}
+
+/* 모달 */
+.modal-overlay {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+}
+
+.modal-window {
+  background: #FFFFFF;
+  border-radius: 28px;
+  border: 1px solid #CBD5E1;
+  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.3);
 }
 
 /* 스크롤바 */
